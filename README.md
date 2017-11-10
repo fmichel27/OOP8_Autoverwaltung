@@ -1,4 +1,4 @@
-# AS - FA53 - Gruppe XX - OOP8-Autoverwaltung
+# AS - FA53 - Gruppe 10 - OOP8-Autoverwaltung
 
 Dies ist eine Einfache Autoverwaltung für die Zuteilung von Autos und Standorten.
 
@@ -11,7 +11,7 @@ Die Projektanforderungen sind [hier](/Aufgabenstellung/Lernsituation.pdf?raw=tru
 ## Mitwirkende Rollen
 
 - Florian Michel  
--
+- Philipp Römer
 
 # Ergebnisprotokolle
 
