@@ -35,16 +35,33 @@ namespace OOP8_Autoverwaltung.src
         void LeseEingabe()
         {
             string eingabe = Console.ReadLine();
+            Console.Clear();
             //Fehlerueberpruefung
             //switch case blöcke
         }
         void ErzeugeAusgabe(string ausgabestring)
         {
             //Konsolenausgabe
+
+        }
+        void ErzeugeAusgabeListeAuto(List<Auto> ausgabeListe)
+        {
+            //Konsolenausgabe
+
+        }
+        void ErzeugeAusgabeListeStandort(List<Standort> ausgabeListe)
+        {
+            //Konsolenausgabe
+
         }
         void ZeigeAlleAutos()
         {
-
+            PrintUeberschrift();
+            Console.WriteLine("Alle Autos:");
+            Console.WriteLine("");
+            //aufruf fachkonzept gibt liste zurück
+            //for each
+            //ErzeugeAusgabeListeAuto();
         }
         void ZeigeAlleStandorte()
         {
@@ -82,6 +99,11 @@ namespace OOP8_Autoverwaltung.src
         void StandortAendern()
         {
 
+        }
+        void PrintUeberschrift()
+        {
+            Console.WriteLine("AUTO-VERWALTUNGS-SYSTEM");
+            Console.WriteLine("");
         }
 
     }
