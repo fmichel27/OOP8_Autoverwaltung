@@ -1,8 +1,0 @@
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\obj\Debug\OOP8_Autoverwaltung.csprojResolveAssemblyReference.cache
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\bin\Debug\OOP8_Autoverwaltung.exe.config
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\bin\Debug\OOP8_Autoverwaltung.exe
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\bin\Debug\OOP8_Autoverwaltung.pdb
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\obj\Debug\OOP8_Autoverwaltung.exe
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\obj\Debug\OOP8_Autoverwaltung.pdb
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\obj\Debug\OOP8_Autoverwaltung.src.GUI.resources
-C:\Users\user\Desktop\oop8\OOP8_Autoverwaltung\OOP8_Autoverwaltung\obj\Debug\OOP8_Autoverwaltung.csproj.GenerateResource.Cache
