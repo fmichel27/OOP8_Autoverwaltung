@@ -6,7 +6,7 @@ Dies ist eine Einfache Autoverwaltung für die Zuteilung von Autos und Standorte
 
 # Documentation
 
-Die Projektanforderungen sind [hier](/Aufgabenstellung/Lernsituation.pdf?raw=true) zu finden.
+Die Projektanforderungen sind [hier](/Doku/Doku.pdf?raw=true) zu finden.
 
 ## Mitwirkende Rollen
 
