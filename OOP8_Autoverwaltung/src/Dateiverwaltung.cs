@@ -36,7 +36,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void SpeichereAuto(Auto auto, int a)
+        public void SpeichereAuto(Auto auto)
         {
             throw new NotImplementedException();
         }

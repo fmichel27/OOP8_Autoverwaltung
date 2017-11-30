@@ -10,7 +10,7 @@ namespace OOP8_Autoverwaltung.src
     {
         void CreateSpeichermedium(string a,string b);
         Auto LeseAuto(int autoNummer);
-        void SpeichereAuto(Auto auto,int a);
+        void SpeichereAuto(Auto auto);
         void LoescheAuto(int autoNummer);
 
         Standort LeseStandort(int standotrNummer);

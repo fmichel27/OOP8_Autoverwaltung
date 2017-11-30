@@ -62,7 +62,8 @@ namespace OOP8_Autoverwaltung.src
 
         public void SpeichereNeuesAuto(Auto neuesAuto)
         {
-            throw new NotImplementedException();
+            Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
+            datenbankverwaltung.SpeichereAuto(neuesAuto);
         }
     }
 }

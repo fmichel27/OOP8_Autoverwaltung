@@ -38,13 +38,7 @@ namespace OOP8_Autoverwaltung.src
         {
             Console.WriteLine("Eingabe:");
             string eingabe = Console.ReadLine();
-            
-            if (true)
-            {
-
-
-            }
-
+           
             Console.Clear();
             if (eingabe == "b")
             {
@@ -54,6 +48,12 @@ namespace OOP8_Autoverwaltung.src
                 {
                     ErzeugeAusgabe(item.GetAutoMarke());
                 }
+            }
+            if (eingabe == "e")
+            {
+                Auto testfiat = new Auto(1,"fiattest");
+                Fachkonzept1 fachkonzept1 = new Fachkonzept1();
+                fachkonzept1.SpeichereNeuesAuto(testfiat);
             }
             //Fehlerueberpruefung
             //switch case blöcke

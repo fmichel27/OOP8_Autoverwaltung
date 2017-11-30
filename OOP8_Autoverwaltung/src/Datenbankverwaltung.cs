@@ -27,7 +27,6 @@ namespace OOP8_Autoverwaltung.src
             try
             {
                 connection.Open();
-                MessageBox.Show("Connection Open ! ");
                 SqlCommand command;
                 string sql = null;
                 SqlDataReader dataReader;
@@ -49,7 +48,30 @@ namespace OOP8_Autoverwaltung.src
                 MessageBox.Show("Can not open connection ! " + ex.Message);
             }
             return autos;
+        }
+        public void SpeichereAuto(Auto auto)
+        {
+            connection = new SqlConnection(connetionString);
+            try
+            {
+                //connection.Open();
+                //SqlCommand command;
+                //string sql = null;
+                //sql = "INSERT INTO Autos (Marke, F_Standort_id) VALUES(@marke, @standortId);";
+                //command.Parameters.AddWithValue("@marke", auto.GetAutoMarke());
+                //command.Parameters.AddWithValue("@standortId", auto.GetStandortId());
+                //command = new SqlCommand(sql, connection);
+                //int test = command.ExecuteNonQuery();
+                //Console.WriteLine(test);
+                //Console.ReadLine();
+                //command.Dispose();
 
+                //connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection ! " + ex.Message);
+            }
         }
 
         public Auto LeseAuto(int autoNummer)
@@ -72,10 +94,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void SpeichereAuto(Auto auto, int a)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void SpeichereStandort(Standort standort, int a)
         {
