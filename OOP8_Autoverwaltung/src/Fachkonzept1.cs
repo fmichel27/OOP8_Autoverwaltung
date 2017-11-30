@@ -14,8 +14,10 @@ namespace OOP8_Autoverwaltung.src
         }
 
         public List<Auto> GetAlleAutos()
-        {
-            throw new NotImplementedException();
+        { 
+            Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
+            List<Auto> autos = datenbankverwaltung.LeseAlleAutos();
+            return autos;
         }
 
         public List<Standort> GetAlleStandorte()

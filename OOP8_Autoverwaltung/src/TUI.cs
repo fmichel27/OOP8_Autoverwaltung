@@ -30,17 +30,38 @@ namespace OOP8_Autoverwaltung.src
             Console.WriteLine("{0," + space + "}{1}", " Standort anlegen", "(h)");
             Console.WriteLine("{0," + space + "}{1}", " Standort aendern", "(i)");
             Console.WriteLine("{0," + space + "}{1}", " Standort loeschen", "(j)");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine();
             LeseEingabe();
         }
         void LeseEingabe()
         {
+            Console.WriteLine("Eingabe:");
             string eingabe = Console.ReadLine();
+            
+            if (true)
+            {
+
+
+            }
+
             Console.Clear();
+            if (eingabe == "b")
+            {
+                Fachkonzept1 fachkonzept1 = new Fachkonzept1();
+                List<Auto> autos = fachkonzept1.GetAlleAutos();
+                foreach (var item in autos)
+                {
+                    ErzeugeAusgabe(item.GetAutoMarke());
+                }
+            }
             //Fehlerueberpruefung
             //switch case blöcke
         }
         void ErzeugeAusgabe(string ausgabestring)
         {
+            Console.WriteLine(ausgabestring);
+            Console.ReadLine();
             //Konsolenausgabe
 
         }

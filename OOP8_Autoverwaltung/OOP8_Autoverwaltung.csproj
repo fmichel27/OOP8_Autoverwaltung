@@ -73,12 +73,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AutoverwaltungdbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="src\Dateiverwaltung.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="src\Auto.cs" />
+    <Compile Include="src\Datenbankverwaltung.cs" />
+    <Compile Include="src\Fachkonzept1.cs" />
+    <Compile Include="src\Fachkonzept2.cs" />
     <Compile Include="src\GUI.cs">
       <SubType>Form</SubType>
     </Compile>

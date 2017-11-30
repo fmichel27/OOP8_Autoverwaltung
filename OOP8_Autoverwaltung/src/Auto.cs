@@ -11,21 +11,32 @@ namespace OOP8_Autoverwaltung.src
         string autoMarke;
         int autoID;
 
-        string GetAutoMarke()
+        public Auto()
+        {
+
+        }
+        public Auto(int autoID, string autoMarke )
+        {
+            this.autoID = autoID;
+            this.autoMarke = autoMarke;
+        }
+
+
+        public string GetAutoMarke()
         {
             return autoMarke;
         }
 
-        void SetAutoMarke(string autoMarke)
+        public void SetAutoMarke(string autoMarke)
         {
             this.autoMarke = autoMarke;
         }
 
-        int GetAutoID()
+        public int GetAutoID()
         {
             return autoID;
         }
-        void SetAutoID(int autoID)
+        public void SetAutoID(int autoID)
         {
             this.autoID = autoID;
         }
