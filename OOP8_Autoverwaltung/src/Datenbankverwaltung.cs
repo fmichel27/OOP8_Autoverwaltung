@@ -54,19 +54,19 @@ namespace OOP8_Autoverwaltung.src
             connection = new SqlConnection(connectionString);
             try
             {
-                //connection.Open();
-                //SqlCommand command;
-                //string sql = null;
-                //sql = "INSERT INTO Autos (Marke, F_Standort_id) VALUES(@marke, @standortId);";
+                connection.Open();
+                Console.WriteLine("YYYYYYYYYYYY");
+                Console.WriteLine("hier1: "+ auto.GetAutoMarke() + auto.GetStandortId());
+                SqlCommand command = new SqlCommand("INSERT INTO Autos (Marke, F_Standort_id) VALUES("+ auto.GetAutoMarke() + ","+ auto.GetStandortId() + ");", connection);
                 //command.Parameters.AddWithValue("@marke", auto.GetAutoMarke());
                 //command.Parameters.AddWithValue("@standortId", auto.GetStandortId());
-                //command = new SqlCommand(sql, connection);
-                //int test = command.ExecuteNonQuery();
-                //Console.WriteLine(test);
-                //Console.ReadLine();
-                //command.Dispose();
+                Console.WriteLine("hier2: "+ auto.GetAutoMarke()+ " - - "+ auto.GetStandortId()+ "...XXX");
+                int test = command.ExecuteNonQuery();
+                Console.WriteLine(test);
+                Console.ReadLine();
+                command.Dispose();
 
-                //connection.Close();
+                connection.Close();
             }
             catch (Exception ex)
             {

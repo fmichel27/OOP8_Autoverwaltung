@@ -51,12 +51,13 @@ namespace OOP8_Autoverwaltung.src
             }
             if (eingabe == "e")
             {
-                Auto testfiat = new Auto(1,"fiattest");
+                Auto testfiat = new Auto(2,"ferraritest");
                 Fachkonzept1 fachkonzept1 = new Fachkonzept1();
                 fachkonzept1.SpeichereNeuesAuto(testfiat);
             }
             //Fehlerueberpruefung
             //switch case blöcke
+            //Kommentar
         }
         void ErzeugeAusgabe(string ausgabestring)
         {
