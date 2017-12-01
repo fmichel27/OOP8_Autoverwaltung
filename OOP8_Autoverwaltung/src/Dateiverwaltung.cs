@@ -16,12 +16,12 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public Auto LeseAuto(int autoNummer)
+        public Auto LiesAuto(int autoNummer)
         {
             throw new NotImplementedException();
         }
 
-        public Standort LeseStandort(int standotrNummer)
+        public Standort LiesStandort(int standortNummer)
         {
             throw new NotImplementedException();
         }

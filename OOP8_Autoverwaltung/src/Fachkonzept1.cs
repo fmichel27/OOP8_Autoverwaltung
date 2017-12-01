@@ -16,7 +16,7 @@ namespace OOP8_Autoverwaltung.src
         public List<Auto> GetAlleAutos()
         { 
             Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
-            List<Auto> autos = datenbankverwaltung.LeseAlleAutos();
+            List<Auto> autos = datenbankverwaltung.LiesAlleAutos();
             return autos;
         }
 

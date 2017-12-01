@@ -13,17 +13,17 @@ namespace OOP8_Autoverwaltung.src
     {
         string datenbankName;
         SqlConnection connection;
-        string connetionString = Properties.Settings.Default.AutoverwaltungdbConnectionString;
+        string connectionString = Properties.Settings.Default.AutoverwaltungdbConnectionString;
 
         public void CreateSpeichermedium(string a, string b)
         {
          
         }
 
-        public List<Auto> LeseAlleAutos()
+        public List<Auto> LiesAlleAutos()
         {
             List<Auto> autos = new List<Auto>();
-            connection = new SqlConnection(connetionString);
+            connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
@@ -51,7 +51,7 @@ namespace OOP8_Autoverwaltung.src
         }
         public void SpeichereAuto(Auto auto)
         {
-            connection = new SqlConnection(connetionString);
+            connection = new SqlConnection(connectionString);
             try
             {
                 //connection.Open();
@@ -74,12 +74,12 @@ namespace OOP8_Autoverwaltung.src
             }
         }
 
-        public Auto LeseAuto(int autoNummer)
+        public Auto LiesAuto(int autoNummer)
         {
             throw new NotImplementedException();
         }
 
-        public Standort LeseStandort(int standotrNummer)
+        public Standort LiesStandort(int standotrNummer)
         {
             throw new NotImplementedException();
         }

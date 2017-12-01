@@ -9,11 +9,11 @@ namespace OOP8_Autoverwaltung.src
     interface IDatenhaltung
     {
         void CreateSpeichermedium(string a,string b);
-        Auto LeseAuto(int autoNummer);
+        Auto LiesAuto(int autoNummer);
         void SpeichereAuto(Auto auto);
         void LoescheAuto(int autoNummer);
 
-        Standort LeseStandort(int standotrNummer);
+        Standort LiesStandort(int standotrNummer);
         void SpeichereStandort(Standort standort, int a);
         void LoescheStandort(int standortNummer);
     }

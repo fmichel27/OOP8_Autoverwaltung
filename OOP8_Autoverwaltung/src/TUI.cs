@@ -32,9 +32,9 @@ namespace OOP8_Autoverwaltung.src
             Console.WriteLine("{0," + space + "}{1}", " Standort loeschen", "(j)");
             Console.WriteLine("---------------------------------");
             Console.WriteLine();
-            LeseEingabe();
+            LiesEingabe();
         }
-        void LeseEingabe()
+        void LiesEingabe()
         {
             Console.WriteLine("Eingabe:");
             string eingabe = Console.ReadLine();
