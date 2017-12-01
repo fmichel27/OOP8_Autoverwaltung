@@ -44,41 +44,41 @@ namespace OOP8_Autoverwaltung.src
 
 
             //switch case blöcke
-            switch (eingabe)
-            {
-                case "a":
-                    ZeigeAlleStandorte();
-                    break;
-                case "b":
-                    ZeigeAlleAutos();
-                    break;
-                case "c":
-                    ZeigeAlleStandorte();
-                    break;
-                case "d":
-                    ZeigeAlleStandorte();
-                    break;
-                case "e":
-                    ();
-                    break;
-                case "f":
-                    ZeigeAlleStandorte();
-                    break;
-                case "g":
-                    ZeigeAlleStandorte();
-                    break;
-                case "h":
-                    ZeigeAlleStandorte();
-                    break;
-                case "i":
-                    ZeigeAlleStandorte();
-                    break;
-                case "j":
-                    ZeigeAlleStandorte();
-                    break;
-                default:
-                    break;
-            }
+            //switch (eingabe)
+            //{
+            //    case "a":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "b":
+            //        ZeigeAlleAutos();
+            //        break;
+            //    case "c":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "d":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "e":
+            //        ();
+            //        break;
+            //    case "f":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "g":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "h":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "i":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    case "j":
+            //        ZeigeAlleStandorte();
+            //        break;
+            //    default:
+            //        break;
+            //}
 
             if (eingabe == "b")
             {
