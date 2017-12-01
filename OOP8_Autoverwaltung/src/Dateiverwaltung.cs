@@ -11,11 +11,6 @@ namespace OOP8_Autoverwaltung.src
         string tmpAutosDateiName;
         string tmpStandorteDateiName;
 
-        public void CreateSpeichermedium(string a, string b)
-        {
-            throw new NotImplementedException();
-        }
-
         public Auto LiesAuto(int autoNummer)
         {
             throw new NotImplementedException();

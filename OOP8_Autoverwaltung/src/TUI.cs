@@ -36,10 +36,50 @@ namespace OOP8_Autoverwaltung.src
         }
         void LiesEingabe()
         {
-            Console.WriteLine("Eingabe:");
+            Console.Write("Eingabe: ");
             string eingabe = Console.ReadLine();
-           
             Console.Clear();
+
+            //Fehlerueberpruefung REGEX
+
+
+            //switch case blöcke
+            switch (eingabe)
+            {
+                case "a":
+                    ZeigeAlleStandorte();
+                    break;
+                case "b":
+                    ZeigeAlleAutos();
+                    break;
+                case "c":
+                    ZeigeAlleStandorte();
+                    break;
+                case "d":
+                    ZeigeAlleStandorte();
+                    break;
+                case "e":
+                    ();
+                    break;
+                case "f":
+                    ZeigeAlleStandorte();
+                    break;
+                case "g":
+                    ZeigeAlleStandorte();
+                    break;
+                case "h":
+                    ZeigeAlleStandorte();
+                    break;
+                case "i":
+                    ZeigeAlleStandorte();
+                    break;
+                case "j":
+                    ZeigeAlleStandorte();
+                    break;
+                default:
+                    break;
+            }
+
             if (eingabe == "b")
             {
                 Fachkonzept1 fachkonzept1 = new Fachkonzept1();
@@ -55,9 +95,6 @@ namespace OOP8_Autoverwaltung.src
                 Fachkonzept1 fachkonzept1 = new Fachkonzept1();
                 fachkonzept1.SpeichereNeuesAuto(testfiat);
             }
-            //Fehlerueberpruefung
-            //switch case blöcke
-            //Kommentar
         }
         void ErzeugeAusgabe(string ausgabestring)
         {

@@ -8,7 +8,6 @@ namespace OOP8_Autoverwaltung.src
 {
     interface IDatenhaltung
     {
-        void CreateSpeichermedium(string a,string b);
         Auto LiesAuto(int autoNummer);
         void SpeichereAuto(Auto auto);
         void LoescheAuto(int autoNummer);

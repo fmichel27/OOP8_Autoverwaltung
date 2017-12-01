@@ -15,11 +15,6 @@ namespace OOP8_Autoverwaltung.src
         SqlConnection connection;
         string connectionString = Properties.Settings.Default.AutoverwaltungdbConnectionString;
 
-        public void CreateSpeichermedium(string a, string b)
-        {
-         
-        }
-
         public List<Auto> LiesAlleAutos()
         {
             List<Auto> autos = new List<Auto>();
@@ -55,17 +50,11 @@ namespace OOP8_Autoverwaltung.src
             try
             {
                 connection.Open();
-                Console.WriteLine("YYYYYYYYYYYY");
-                Console.WriteLine("hier1: "+ auto.GetAutoMarke() + auto.GetStandortId());
-                SqlCommand command = new SqlCommand("INSERT INTO Autos (Marke, F_Standort_id) VALUES("+ auto.GetAutoMarke() + ","+ auto.GetStandortId() + ");", connection);
-                //command.Parameters.AddWithValue("@marke", auto.GetAutoMarke());
-                //command.Parameters.AddWithValue("@standortId", auto.GetStandortId());
-                Console.WriteLine("hier2: "+ auto.GetAutoMarke()+ " - - "+ auto.GetStandortId()+ "...XXX");
+                SqlCommand command = new SqlCommand("INSERT INTO Autos (Marke, F_Standort_id) VALUES ('"+ auto.GetAutoMarke() + "'," + auto.GetStandortId() + ")", connection);
                 int test = command.ExecuteNonQuery();
                 Console.WriteLine(test);
                 Console.ReadLine();
                 command.Dispose();
-
                 connection.Close();
             }
             catch (Exception ex)
