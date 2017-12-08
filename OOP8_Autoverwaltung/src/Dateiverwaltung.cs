@@ -11,32 +11,52 @@ namespace OOP8_Autoverwaltung.src
         string tmpAutosDateiName;
         string tmpStandorteDateiName;
 
-        public Auto LiesAuto(int autoNummer)
+        public void AendereAuto(int id, string neuerName, int neueStandortid)
         {
             throw new NotImplementedException();
         }
 
-        public Standort LiesStandort(int standortNummer)
+        public void AendereStandort(int id, string neuerName)
         {
             throw new NotImplementedException();
         }
 
-        public void LoescheAuto(int autoNummer)
+        public List<Auto> LiesAlleAutos()
         {
             throw new NotImplementedException();
         }
 
-        public void LoescheStandort(int standortNummer)
+        public List<Standort> LiesAlleStandorte()
         {
             throw new NotImplementedException();
         }
 
-        public void SpeichereAuto(Auto auto)
+        public List<Auto> LiesAutoMarke(string gesuchteMarke)
         {
             throw new NotImplementedException();
         }
 
-        public void SpeichereStandort(Standort standort, int a)
+        public Standort LiesStandort(string gesuchterStandort)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoescheAuto(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoescheStandort(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SpeichereAuto(string autoMarke, int standortid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SpeichereStandort(string standortName)
         {
             throw new NotImplementedException();
         }

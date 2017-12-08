@@ -8,12 +8,19 @@ namespace OOP8_Autoverwaltung.src
 {
     interface IDatenhaltung
     {
-        Auto LiesAuto(int autoNummer);
-        void SpeichereAuto(Auto auto);
-        void LoescheAuto(int autoNummer);
+        List<Auto> LiesAlleAutos();
+        List<Standort> LiesAlleStandorte();
+        List<Auto> LiesAutoMarke(string gesuchteMarke);
+        Standort LiesStandort(string gesuchterStandort);
+        void SpeichereAuto(string autoMarke, int standortid);
+        void AendereAuto(int id, string neuerName, int neueStandortid);
+        void LoescheAuto(int id);
+        void SpeichereStandort(string standortName);
+        void AendereStandort(int id, string neuerName);
+        void LoescheStandort(int id);
 
-        Standort LiesStandort(int standotrNummer);
-        void SpeichereStandort(Standort standort, int a);
-        void LoescheStandort(int standortNummer);
+
+
+
     }
 }

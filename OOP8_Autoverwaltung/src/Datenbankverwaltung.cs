@@ -35,59 +35,199 @@ namespace OOP8_Autoverwaltung.src
                 }
                 dataReader.Close();
                 command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verbindungsfehler beim Lesen aller Autos!: " + ex.Message);
+            }
+            return autos;
+        }
+
+        public List<Standort> LiesAlleStandorte()
+        {
+            List<Standort> standorte = new List<Standort>();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command;
+                string sql = null;
+                SqlDataReader dataReader;
+                sql = "Select * from Standorte";
+                command = new SqlCommand(sql, connection);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    standorte.Add(new Standort(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString()));
+
+                }
+                dataReader.Close();
+                command.Dispose();
 
                 connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! " + ex.Message);
+                MessageBox.Show("Verbindungsfehler beim Lesen aller Standorte!: " + ex.Message);
             }
-            return autos;
+            return standorte;
         }
-        public void SpeichereAuto(Auto auto)
+
+
+        public List<Auto> LiesAutoMarke(string gesuchteMarke)
         {
+            List<Auto> autos = new List<Auto>();
             connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO Autos (Marke, F_Standort_id) VALUES ('"+ auto.GetAutoMarke() + "'," + auto.GetStandortId() + ")", connection);
-                int test = command.ExecuteNonQuery();
-                Console.WriteLine(test);
-                Console.ReadLine();
+                SqlCommand command;
+                string sql = null;
+                SqlDataReader dataReader;
+                sql = "Select * from Autos WHERE Marke Like '"+ gesuchteMarke +"'";
+                command = new SqlCommand(sql, connection);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    autos.Add(new Auto(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString()));
+
+                }
+                dataReader.Close();
+                command.Dispose();
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verbindungsfehler beim Lesen der Automarke " + gesuchteMarke + "!: " + ex.Message);
+            }
+            return autos;
+        }
+
+        public Standort LiesStandort(string gesuchterStandort)
+        {
+            Standort standort = new Standort();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command;
+                string sql = null;
+                SqlDataReader dataReader;
+                sql = "Select * from Standorte WHERE Name Like '" + gesuchterStandort + "'";
+                command = new SqlCommand(sql, connection);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    standort.SetStandortID(Convert.ToInt32(dataReader.GetValue(0)));
+                    standort.SetStandortName(dataReader.GetValue(1).ToString());
+                }
+                dataReader.Close();
                 command.Dispose();
                 connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection ! " + ex.Message);
+                MessageBox.Show("Verbindungsfehler beim Lesen des Standortes " + gesuchterStandort + "!: " + ex.Message);
+            }
+            return standort;
+        }
+        public void SpeichereAuto(string autoMarke, int standortid)
+        {
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO Autos (Marke, F_Standort_id) VALUES ('"+ autoMarke + "'," + standortid + ")", connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Speichern des Autos "+ autoMarke + " mit der Standort-ID "+ standortid + " ! " + ex.Message);
             }
         }
-
-        public Auto LiesAuto(int autoNummer)
+        public void AendereAuto(int id,string neuerName,int neueStandortid)
         {
-            throw new NotImplementedException();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("UPDATE Autos SET Marke = '"+ neuerName + "', F_Standort_id = '"+ neueStandortid + "' WHERE Auto_id = " + id , connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Aendern des Autos mit der Auto-ID " + id + " ! " + ex.Message);
+            }
         }
-
-        public Standort LiesStandort(int standotrNummer)
+        public void LoescheAuto(int id)
         {
-            throw new NotImplementedException();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("DELETE FROM Autos WHERE Auto_id = " + id, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Loeschen des Autos mit der Auto-ID " + id + " ! " + ex.Message);
+            }
         }
-
-        public void LoescheAuto(int autoNummer)
+        public void SpeichereStandort(string standortName)
         {
-            throw new NotImplementedException();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO Standorte (NAme) VALUES ('" + standortName + "')", connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Speichern des Standortes " + standortName + " ! " + ex.Message);
+            }
         }
-
-        public void LoescheStandort(int standortNummer)
+        public void AendereStandort(int id, string neuerName)
         {
-            throw new NotImplementedException();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("UPDATE Standorte SET Name = '" + neuerName + "' WHERE Standort_id = " + id, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Aendern des Standortes mit der Standort-ID " + id + " ! " + ex.Message);
+            }
         }
-
-
-
-        public void SpeichereStandort(Standort standort, int a)
+        public void LoescheStandort(int id)
         {
-            throw new NotImplementedException();
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("DELETE FROM Standorte WHERE Standort_id = " + id, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Loeschen des Standortes mit der Standort-ID " + id + " ! " + ex.Message);
+            }
         }
     }
 }

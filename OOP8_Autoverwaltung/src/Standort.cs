@@ -8,24 +8,33 @@ namespace OOP8_Autoverwaltung.src
 {
     class Standort
     {
-        int standortID;
+        int standortid;
         string standortName;
 
-        string GetStandortName()
+        public Standort()
+        {
+
+        }
+        public Standort(int standortId, string standortName)
+        {
+            this.standortid = standortId;
+            this.standortName = standortName;
+        }
+        public string GetStandortName()
         {
             return standortName;
         }
 
-        void SetStandortName(string standortName)
+        public void SetStandortName(string standortName)
         {
             this.standortName = standortName;
         }
 
-        int GetStandortID()
+        public int GetStandortID()
         {
             return standortID;
         }
-        void SetStandortID(int standortID)
+        public void SetStandortID(int standortID)
         {
             this.standortID = standortID;
         }
