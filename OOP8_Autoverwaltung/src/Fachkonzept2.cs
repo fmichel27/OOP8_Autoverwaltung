@@ -8,7 +8,22 @@ namespace OOP8_Autoverwaltung.src
 {
     class Fachkonzept2 : IFachkonzept
     {
-        public void AendereAutoStandort(int autoNr, Standort standort)
+        public void AendereAuto(int autoNr, Auto auto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AendereStandort(int standortNr, Standort standort)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Auto> FilterAutosNachAutomarke(string gesuchteMArke)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Auto> FilterAutosNachStandort(string gesuchterStandort)
         {
             throw new NotImplementedException();
         }
@@ -23,26 +38,6 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public int GetAutoNr()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Auto> GetAutosAnStandort()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Standort GetAutoStandort()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetStandortNr()
-        {
-            throw new NotImplementedException();
-        }
-
         public void InitialisiereSpeichermedium(string speichermedium)
         {
             throw new NotImplementedException();
@@ -53,7 +48,12 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void LoescheStandort(int standortNr)
+        public void LoescheSTandort(int standortNr)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SpeichereNeuenStandort(Standort neuerStandort)
         {
             throw new NotImplementedException();
         }

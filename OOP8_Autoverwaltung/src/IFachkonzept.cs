@@ -10,16 +10,19 @@ namespace OOP8_Autoverwaltung.src
     {
 
         void InitialisiereSpeichermedium(string speichermedium);
-        void SpeichereNeuesAuto(Auto neuesAuto);
-        void AendereAutoStandort(int autoNr, Standort standort);
-        void LoescheAuto(int autoNr);
-        Standort GetAutoStandort();
-        int GetAutoNr();
         List<Auto> GetAlleAutos();
-
-        void LoescheStandort(int standortNr);
-        int GetStandortNr();
-        List<Auto> GetAutosAnStandort();
         List<Standort> GetAlleStandorte();
+        List<Auto> FilterAutosNachAutomarke(string gesuchteMArke);
+        List<Auto> FilterAutosNachStandort(string gesuchterStandort);
+        void SpeichereNeuesAuto(Auto neuesAuto);
+        void AendereAuto(int autoNr, Auto auto);
+        void LoescheAuto(int autoNr);
+        void SpeichereNeuenStandort(Standort neuerStandort);
+        void AendereStandort(int standortNr, Standort standort);
+        void LoescheSTandort(int standortNr);
+
+
+
+
     }
 }

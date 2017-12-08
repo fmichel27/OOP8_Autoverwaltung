@@ -11,7 +11,7 @@ namespace OOP8_Autoverwaltung.src
         List<Auto> LiesAlleAutos();
         List<Standort> LiesAlleStandorte();
         List<Auto> LiesAutoMarke(string gesuchteMarke);
-        Standort LiesStandort(string gesuchterStandort);
+        List<Auto> LiesStandort(string gesuchterStandort)
         void SpeichereAuto(string autoMarke, int standortid);
         void AendereAuto(int id, string neuerName, int neueStandortid);
         void LoescheAuto(int id);

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -105,9 +101,9 @@ namespace OOP8_Autoverwaltung.src
             return autos;
         }
 
-        public Standort LiesStandort(string gesuchterStandort)
+        public List<Auto> LiesStandort(string gesuchterStandort)
         {
-            Standort standort = new Standort();
+            List<Auto> autos = new List<Auto>();
             connection = new SqlConnection(connectionString);
             try
             {
@@ -115,13 +111,20 @@ namespace OOP8_Autoverwaltung.src
                 SqlCommand command;
                 string sql = null;
                 SqlDataReader dataReader;
-                sql = "Select * from Standorte WHERE Name Like '" + gesuchterStandort + "'";
+                sql = "Select * from Standort WHERE Name Like '" + gesuchterStandort + "'";
+                command = new SqlCommand(sql, connection);
+                dataReader = command.ExecuteReader();
+                int standortid = Convert.ToInt32(dataReader.GetValue(0));
+                dataReader.Close();
+                command.Dispose();
+
+
+                sql = "Select * from Autos WHERE F_Standort_id Like '" + standortid + "'";
                 command = new SqlCommand(sql, connection);
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    standort.SetStandortID(Convert.ToInt32(dataReader.GetValue(0)));
-                    standort.SetStandortName(dataReader.GetValue(1).ToString());
+                    autos.Add(new Auto(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString()));
                 }
                 dataReader.Close();
                 command.Dispose();
@@ -131,7 +134,7 @@ namespace OOP8_Autoverwaltung.src
             {
                 MessageBox.Show("Verbindungsfehler beim Lesen des Standortes " + gesuchterStandort + "!: " + ex.Message);
             }
-            return standort;
+            return autos;
         }
         public void SpeichereAuto(string autoMarke, int standortid)
         {

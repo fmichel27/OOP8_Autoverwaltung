@@ -8,62 +8,76 @@ namespace OOP8_Autoverwaltung.src
 {
     class Fachkonzept1 : IFachkonzept
     {
-        public void AendereAutoStandort(int autoNr, Standort standort)
-        {
-            throw new NotImplementedException();
-        }
+        Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
 
         public List<Auto> GetAlleAutos()
         { 
-            Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
             List<Auto> autos = datenbankverwaltung.LiesAlleAutos();
             return autos;
         }
 
         public List<Standort> GetAlleStandorte()
         {
-            throw new NotImplementedException();
+            List<Standort> standorte = datenbankverwaltung.LiesAlleStandorte();
+            return standorte;
         }
 
-        public int GetAutoNr()
+        public List<Auto> FilterAutosNachAutomarke(string gesuchteMArke)
         {
-            throw new NotImplementedException();
+            List<Auto> autos = datenbankverwaltung.LiesAutoMarke(gesuchteMArke);
+            return autos;
+        }
+        public List<Auto> FilterAutosNachStandort(string gesuchterStandort)
+        {
+            List<Auto> autos = datenbankverwaltung.LiesStandort(gesuchterStandort);
+            return autos;
         }
 
-        public List<Auto> GetAutosAnStandort()
+        public void SpeichereNeuesAuto(Auto neuesAuto)
         {
-            throw new NotImplementedException();
+            datenbankverwaltung.SpeichereAuto(neuesAuto.GetAutoMarke(), neuesAuto.GetStandortId());
         }
 
-        public Standort GetAutoStandort()
+        public void AendereAuto(int autoNr, Auto auto)
         {
-            throw new NotImplementedException();
+            datenbankverwaltung.AendereAuto(autoNr, auto.GetAutoMarke(),auto.GetStandortId());
+        }
+        public void LoescheAuto(int autoNr)
+        {
+            datenbankverwaltung.LoescheAuto(autoNr);
+        }
+        public void SpeichereNeuenStandort(Standort neuerStandort)
+        {
+            datenbankverwaltung.SpeichereStandort(neuerStandort.GetStandortName());
         }
 
-        public int GetStandortNr()
+        public void AendereStandort(int standortNr, Standort standort)
         {
-            throw new NotImplementedException();
+            datenbankverwaltung.AendereStandort(standortNr, standort.GetStandortName());
         }
+        public void LoescheSTandort(int standortNr)
+        {
+            datenbankverwaltung.LoescheStandort(standortNr);
+        }
+
+
+
+
+
 
         public void InitialisiereSpeichermedium(string speichermedium)
         {
             throw new NotImplementedException();
         }
 
-        public void LoescheAuto(int autoNr)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void LoescheStandort(int standortNr)
         {
             throw new NotImplementedException();
         }
 
-        public void SpeichereNeuesAuto(Auto neuesAuto)
-        {
-            Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
-            datenbankverwaltung.SpeichereAuto(neuesAuto);
-        }
+
+
     }
 }
