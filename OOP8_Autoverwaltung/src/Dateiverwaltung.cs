@@ -16,7 +16,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void AendereStandort(int id, string neuerName)
+        public void AendereStandort(string alterStandortName, string neuerName)
         {
             throw new NotImplementedException();
         }
@@ -57,6 +57,11 @@ namespace OOP8_Autoverwaltung.src
         }
 
         public void SpeichereStandort(string standortName)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Auto> IDatenhaltung.LiesStandort(string gesuchterStandort)
         {
             throw new NotImplementedException();
         }

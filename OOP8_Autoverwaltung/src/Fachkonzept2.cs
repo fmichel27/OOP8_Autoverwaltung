@@ -13,7 +13,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void AendereStandort(int standortNr, Standort standort)
+        public void AendereStandort(string alterStandortName, string neuerName)
         {
             throw new NotImplementedException();
         }

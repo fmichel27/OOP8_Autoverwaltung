@@ -18,7 +18,7 @@ namespace OOP8_Autoverwaltung.src
         void AendereAuto(int autoNr, Auto auto);
         void LoescheAuto(int autoNr);
         void SpeichereNeuenStandort(Standort neuerStandort);
-        void AendereStandort(int standortNr, Standort standort);
+        void AendereStandort(string alterStandortName, string neuerStandortName);
         void LoescheSTandort(int standortNr);
 
 

@@ -51,9 +51,9 @@ namespace OOP8_Autoverwaltung.src
             datenbankverwaltung.SpeichereStandort(neuerStandort.GetStandortName());
         }
 
-        public void AendereStandort(int standortNr, Standort standort)
+        public void AendereStandort(string alterStandortName, string neuerStandortName)
         {
-            datenbankverwaltung.AendereStandort(standortNr, standort.GetStandortName());
+            datenbankverwaltung.AendereStandort(alterStandortName, neuerStandortName);
         }
         public void LoescheSTandort(int standortNr)
         {

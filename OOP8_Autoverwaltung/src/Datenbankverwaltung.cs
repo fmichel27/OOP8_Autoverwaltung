@@ -200,20 +200,22 @@ namespace OOP8_Autoverwaltung.src
                 MessageBox.Show("Fehler beim Speichern des Standortes " + standortName + " ! " + ex.Message);
             }
         }
-        public void AendereStandort(int id, string neuerName)
+        public void AendereStandort(string alterStandortName, string neuerName)
         {
+            //TODO
+            // Überprüfung ob name schon in der Datenbank vorhanden damit keine doppelten einträge
             connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("UPDATE Standorte SET Name = '" + neuerName + "' WHERE Standort_id = " + id, connection);
+                SqlCommand command = new SqlCommand("UPDATE Standorte SET Name = '" + neuerName + "' WHERE Name = " + alterStandortName, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fehler beim Aendern des Standortes mit der Standort-ID " + id + " ! " + ex.Message);
+                MessageBox.Show("Fehler beim Aendern des Standortes mit dem Name " + alterStandortName + " ! " + ex.Message);
             }
         }
         public void LoescheStandort(int id)

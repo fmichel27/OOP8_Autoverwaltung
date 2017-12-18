@@ -15,6 +15,10 @@ namespace OOP8_Autoverwaltung.src
         {
 
         }
+        public Standort(string standortName)
+        {
+            this.standortName = standortName;
+        }
         public Standort(int standortId, string standortName)
         {
             this.standortid = standortId;
@@ -32,11 +36,11 @@ namespace OOP8_Autoverwaltung.src
 
         public int GetStandortID()
         {
-            return standortID;
+            return standortid;
         }
-        public void SetStandortID(int standortID)
+        public void SetStandortID(int standortid)
         {
-            this.standortID = standortID;
+            this.standortid = standortid;
         }
     }
 }
