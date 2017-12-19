@@ -8,58 +8,63 @@ namespace OOP8_Autoverwaltung.src
 {
     class Fachkonzept1 : IFachkonzept
     {
-        Datenbankverwaltung datenbankverwaltung = new Datenbankverwaltung();
+        private IDatenhaltung eineDatenhaltung;
+
+        public Fachkonzept1(IDatenhaltung eineDatenhaltung)
+        {
+            this.eineDatenhaltung = eineDatenhaltung;
+        }
 
         public List<Auto> GetAlleAutos()
         { 
-            List<Auto> autos = datenbankverwaltung.LiesAlleAutos();
+            List<Auto> autos = eineDatenhaltung.LiesAlleAutos();
             return autos;
         }
 
         public List<Standort> GetAlleStandorte()
         {
-            List<Standort> standorte = datenbankverwaltung.LiesAlleStandorte();
+            List<Standort> standorte = eineDatenhaltung.LiesAlleStandorte();
             return standorte;
         }
 
         public List<Auto> FilterAutosNachAutomarke(string gesuchteMArke)
         {
-            List<Auto> autos = datenbankverwaltung.LiesAutoMarke(gesuchteMArke);
+            List<Auto> autos = eineDatenhaltung.LiesAutoMarke(gesuchteMArke);
             return autos;
         }
         public List<Auto> FilterAutosNachStandort(int standortid)
         {
-            List<Auto> autos = datenbankverwaltung.LiesStandort(standortid);
+            List<Auto> autos = eineDatenhaltung.LiesStandort(standortid);
             return autos;
         }
 
         public void SpeichereNeuesAuto(string automarke)
         {
             Auto neuesAuto = new Auto(automarke);
-            datenbankverwaltung.SpeichereAuto(neuesAuto.GetAutoMarke(), neuesAuto.GetStandortId());
+            eineDatenhaltung.SpeichereAuto(neuesAuto.GetAutoMarke(), neuesAuto.GetStandortId());
         }
 
         public void AendereAuto(int autoNr, string automarke)
         {
             Auto auto = new Auto(automarke);
-            datenbankverwaltung.AendereAuto(autoNr, auto.GetAutoMarke(),auto.GetStandortId());
+            eineDatenhaltung.AendereAuto(autoNr, auto.GetAutoMarke(),auto.GetStandortId());
         }
         public void LoescheAuto(int autoNr)
         {
-            datenbankverwaltung.LoescheAuto(autoNr);
+            eineDatenhaltung.LoescheAuto(autoNr);
         }
         public void SpeichereNeuenStandort(Standort neuerStandort)
         {
-            datenbankverwaltung.SpeichereStandort(neuerStandort.GetStandortName());
+            eineDatenhaltung.SpeichereStandort(neuerStandort.GetStandortName());
         }
 
         public void AendereStandort(int standortid, string neuerStandortName)
         {
-            datenbankverwaltung.AendereStandort(standortid, neuerStandortName);
+            eineDatenhaltung.AendereStandort(standortid, neuerStandortName);
         }
         public void LoescheStandort(int standortNr)
         {
-            datenbankverwaltung.LoescheStandort(standortNr);
+            eineDatenhaltung.LoescheStandort(standortNr);
         }
 
 
@@ -71,7 +76,7 @@ namespace OOP8_Autoverwaltung.src
  
         public Standort getStandortDesAutos(int standortid)
         {
-            Standort standortDesAutos = datenbankverwaltung.getStandortDesAutos(standortid);
+            Standort standortDesAutos = eineDatenhaltung.getStandortDesAutos(standortid);
 
             return standortDesAutos;
         }

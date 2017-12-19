@@ -10,8 +10,10 @@ namespace OOP8_Autoverwaltung.src
 
     class TUI
     {
-        public TUI()
+        private IFachkonzept einFachkonzept;
+        public TUI(IFachkonzept einFachkonzept)
         {
+            this.einFachkonzept = einFachkonzept;
             ZeigeMenue();
         }
         public void ZeigeMenue()
@@ -38,14 +40,16 @@ namespace OOP8_Autoverwaltung.src
         }
         void LiesEingabe()
         {
+            bool wiederholung = false;
             string eingabe = "z";
             do
             {
-                
+                if (wiederholung)
+                    Console.WriteLine("Bitte nur Buchstaben von a bis j eingeben, x zum Beenden.");
                 Console.Write("Eingabe: ");
                 eingabe = Console.ReadLine();
-                Console.Clear();
-                Console.ReadLine();
+                //Console.Clear();
+                wiederholung = true;
             } while (!Regex.IsMatch(eingabe, "[a-j,x]"));
 
             switch (eingabe)
@@ -109,6 +113,7 @@ namespace OOP8_Autoverwaltung.src
             Console.WriteLine("Alle Autos:");
             Console.WriteLine("");
             //aufruf fachkonzept gibt liste zurück
+            //List<Auto> autos = einFachkonzept.ZeigeAlleAutos();
             //for each
             //ErzeugeAusgabeListeAuto();
         }

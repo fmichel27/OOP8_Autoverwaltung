@@ -8,6 +8,13 @@ namespace OOP8_Autoverwaltung.src
 {
     class Fachkonzept2 : IFachkonzept
     {
+        private IDatenhaltung eineDatenhaltung;
+
+        public Fachkonzept2(IDatenhaltung eineDatenhaltung)
+        {
+            this.eineDatenhaltung = eineDatenhaltung;
+        }
+
         public void AendereAuto(int autoNr, Auto auto)
         {
             throw new NotImplementedException();
