@@ -38,15 +38,15 @@ namespace OOP8_Autoverwaltung.src
         }
         void LiesEingabe()
         {
-            var regexMenue = new Regex(@"[a-j,x]", RegexOptions.IgnoreCase);
             string eingabe = "z";
             do
             {
-
+                
                 Console.Write("Eingabe: ");
                 eingabe = Console.ReadLine();
                 Console.Clear();
-            } while (Regex.IsMatch(eingabe, regexMenue));
+                Console.ReadLine();
+            } while (!Regex.IsMatch(eingabe, "[a-j,x]"));
 
             switch (eingabe)
             {
@@ -63,7 +63,7 @@ namespace OOP8_Autoverwaltung.src
                     ZeigeAlleStandorte();
                     break;
                 case "e":
-                    ();
+                    AutoAnlegen();
                     break;
                 case "f":
                     ZeigeAlleStandorte();
@@ -80,24 +80,11 @@ namespace OOP8_Autoverwaltung.src
                 case "j":
                     ZeigeAlleStandorte();
                     break;
+                case "x":
+                    break;
                 default:
                     break;
             }
-
-            //if (eingabe == "b")
-            //{
-            //    Fachkonzept1 fachkonzept1 = new Fachkonzept1();
-            //    List<Auto> autos = fachkonzept1.GetAlleAutos();
-            //    foreach (var item in autos)
-            //    {
-            //        ErzeugeAusgabe(item.GetAutoMarke());
-            //    }
-            //}
-            //if (eingabe == "e")
-            //{
-            //    Fachkonzept1 fachkonzept1 = new Fachkonzept1();
-            //    fachkonzept1.SpeichereNeuesAuto("ferraritest");
-            //}
         }
         void ErzeugeAusgabe(string ausgabestring)
         {

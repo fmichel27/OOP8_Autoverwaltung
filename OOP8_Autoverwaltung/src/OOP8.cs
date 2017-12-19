@@ -10,8 +10,8 @@ namespace OOP8_Autoverwaltung.src
     {
         public static void Main()
         {
-            GUI einGui = new GUI();
-            //TUI eineTui = new TUI();
+            //GUI einGui = new GUI();
+            TUI eineTui = new TUI();
            
         }
     }
