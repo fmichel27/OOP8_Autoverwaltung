@@ -10,14 +10,14 @@ namespace OOP8_Autoverwaltung.src
     {
         public static void Main()
         {
-            //GUI eineGui = new GUI(new Fachkonzept1(new Datenbankverwaltung));
-            //GUI eineGui = new GUI(new Fachkonzept2(new Datenbankverwaltung));
-            //GUI eineGui = new GUI(new Fachkonzept1(new Dateiverwaltung));
-            //GUI eineGui = new GUI(new Fachkonzept2(new Dateiverwaltung));
-            TUI eineTui = new TUI(new Fachkonzept1(new Datenbankverwaltung));
-            //TUI eineTui = new TUI(new Fachkonzept2(new Datenbankverwaltung));
-            //TUI eineTui = new TUI(new Fachkonzept1(new Dateiverwaltung));
-            //TUI eineTui = new TUI(new Fachkonzept2(new Dateiverwaltung));
+            //GUI eineGui = new GUI(new Fachkonzept1(new Datenbankverwaltung()));
+            //GUI eineGui = new GUI(new Fachkonzept2(new Datenbankverwaltung()));
+            //GUI eineGui = new GUI(new Fachkonzept1(new Dateiverwaltung()));
+            //GUI eineGui = new GUI(new Fachkonzept2(new Dateiverwaltung()));
+            TUI eineTui = new TUI(new Fachkonzept1(new Datenbankverwaltung()));
+            //TUI eineTui = new TUI(new Fachkonzept2(new Datenbankverwaltung()));
+            //TUI eineTui = new TUI(new Fachkonzept1(new Dateiverwaltung()));
+            //TUI eineTui = new TUI(new Fachkonzept2(new Dateiverwaltung()));
 
         }
     }
