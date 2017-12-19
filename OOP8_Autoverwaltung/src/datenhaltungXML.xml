@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Xml>
+  <Standort>
+    <Id>1</Id>
+    <Name>Berlin</Name>
+    <Autos>
+      <Auto>
+        <Id>1</Id>
+        <Marke>Skoda</Marke>
+      </Auto>
+      <Auto>
+        <Id>2</Id>
+        <Marke>VW</Marke>
+      </Auto>
+    </Autos>
+  </Standort>
+  <Standort>
+    <Id>2</Id>
+    <Name>Hamburg</Name>
+    <Autos>
+      <Auto>
+        <Id>1</Id>
+        <Marke>Mercedes</Marke>
+      </Auto>
+      <Auto>
+        <Id>2</Id>
+        <Marke>Seat</Marke>
+      </Auto>
+    </Autos>
+  </Standort>
+</Xml>

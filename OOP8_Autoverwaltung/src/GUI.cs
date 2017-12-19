@@ -5,14 +5,13 @@ using System.Windows.Forms;
 
 namespace OOP8_Autoverwaltung.src
 {
-    public partial class GUI : Form
+    partial class GUI : Form
     {
         private IFachkonzept einFachkonzept;
 
-        public GUI()
+        public GUI(IFachkonzept einFachkonzept)
         {
-            einFachkonzept = new Fachkonzept1();
-            //einFachkonzept = new Fachkonzept2();
+            this.einFachkonzept = einFachkonzept;
 
             Application.EnableVisualStyles();
             InitializeComponent();
