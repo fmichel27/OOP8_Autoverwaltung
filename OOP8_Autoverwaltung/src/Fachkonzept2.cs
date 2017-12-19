@@ -72,10 +72,10 @@ namespace OOP8_Autoverwaltung.src
 
         public void LoescheStandort(int standortNr)
         {
-            throw new NotImplementedException();
+            eineDatenhaltung.LoescheStandort(standortNr);
         }
 
-        public void SpeichereNeuenStandort(Standort neuerStandort)
+        public void SpeichereNeuenStandort(string neuerStandortName)
         {
             throw new NotImplementedException();
         }

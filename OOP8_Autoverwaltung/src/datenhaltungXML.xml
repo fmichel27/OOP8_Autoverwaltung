@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Xml>
   <Standort>
-    <Id>1</Id>
+    <StandortId>1</StandortId>
     <Name>Berlin</Name>
     <Autos>
       <Auto>
-        <Id>1</Id>
+        <AutoId>1</AutoId>
         <Marke>Skoda</Marke>
       </Auto>
       <Auto>
-        <Id>2</Id>
+        <AutoId>2</AutoId>
         <Marke>VW</Marke>
       </Auto>
     </Autos>
   </Standort>
   <Standort>
-    <Id>2</Id>
+    <StandortId>2</StandortId>
     <Name>Hamburg</Name>
     <Autos>
       <Auto>
-        <Id>1</Id>
+        <AutoId>1</AutoId>
         <Marke>Mercedes</Marke>
       </Auto>
       <Auto>
-        <Id>2</Id>
+        <AutoId>2</AutoId>
         <Marke>Seat</Marke>
       </Auto>
     </Autos>

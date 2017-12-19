@@ -41,7 +41,7 @@ namespace OOP8_Autoverwaltung.src
         void LiesEingabe()
         {
             bool wiederholung = false;
-            string eingabe = "z";
+            string eingabe;
             do
             {
                 if (wiederholung)
@@ -50,7 +50,7 @@ namespace OOP8_Autoverwaltung.src
                 eingabe = Console.ReadLine();
                 //Console.Clear();
                 wiederholung = true;
-            } while (!Regex.IsMatch(eingabe, "[a-j,x]"));
+            } while (!Regex.IsMatch(eingabe, "^[a-j,x]$"));
 
             switch (eingabe)
             {
@@ -61,28 +61,28 @@ namespace OOP8_Autoverwaltung.src
                     ZeigeAlleAutos();
                     break;
                 case "c":
-                    ZeigeAlleStandorte();
+                    FilternNachAutoMarke();
                     break;
                 case "d":
-                    ZeigeAlleStandorte();
+                    FilternNachStandortName();
                     break;
                 case "e":
                     AutoAnlegen();
                     break;
                 case "f":
-                    ZeigeAlleStandorte();
+                    AutoAendern();
                     break;
                 case "g":
-                    ZeigeAlleStandorte();
+                    AutoLoeschen();
                     break;
                 case "h":
-                    ZeigeAlleStandorte();
+                    StandortAnlegen();
                     break;
                 case "i":
-                    ZeigeAlleStandorte();
+                    StandortAendern();
                     break;
                 case "j":
-                    ZeigeAlleStandorte();
+                    StandortLoeschen();
                     break;
                 case "x":
                     break;
@@ -121,11 +121,11 @@ namespace OOP8_Autoverwaltung.src
         {
 
         }
-        void FilternNachAutoMarke(string marke)
+        void FilternNachAutoMarke()
         {
 
         }
-        void FilternNachStandortName(string name)
+        void FilternNachStandortName()
         {
 
         }
@@ -148,7 +148,15 @@ namespace OOP8_Autoverwaltung.src
         }
         void StandortLoeschen()
         {
+            string eingabe;
+            Console.WriteLine("Welchen Standort möchten Sie löschen?");
+            Console.Write("Bitte ID eingeben: ");
+            do
+            {
+                eingabe = Console.ReadLine();
 
+            } while (!Regex.IsMatch(eingabe, "[0-9]+"));
+            einFachkonzept.LoescheStandort(Convert.ToInt32(eingabe));
         }
         void StandortAendern()
         {
@@ -156,7 +164,7 @@ namespace OOP8_Autoverwaltung.src
         }
         void PrintUeberschrift()
         {
-            Console.WriteLine("AUTO-VERWALTUNGS-SYSTEM");
+            Console.WriteLine("AUTO-VERWALTUNGSSYSTEM");
             Console.WriteLine("");
         }
 

@@ -47,7 +47,7 @@ namespace OOP8_Autoverwaltung.src
             List<Standort> standortListe = new List<Standort>();
             foreach (XmlNode Standorte in xmlDocument.DocumentElement)
             {
-                standortListe.Add(new Standort(Convert.ToInt32(xmlDocument.SelectSingleNode("Xml/Standort/Id")), Convert.ToString(xmlDocument.SelectSingleNode("Xml/Standort/Name"))));
+                standortListe.Add(new Standort(Convert.ToInt32(Standorte.SelectSingleNode("Xml/Standort/Id")), Convert.ToString(Standorte.SelectSingleNode("Xml/Standort/Name"))));
             }
             return standortListe;
         }
@@ -69,7 +69,15 @@ namespace OOP8_Autoverwaltung.src
 
         public void LoescheStandort(int id)
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                if (Convert.ToInt32(standorte.SelectSingleNode("Xml/Standort/id")) == id)
+                {
+                    xmlDocument.DocumentElement.RemoveChild(standorte);
+                }
+            }
         }
 
         public void SpeichereAuto(string autoMarke, int standortid)
@@ -79,12 +87,23 @@ namespace OOP8_Autoverwaltung.src
 
         public void SpeichereStandort(string standortName)
         {
-            throw new NotImplementedException();
-        }
-
-        List<Auto> IDatenhaltung.LiesStandort(int stndortid)
-        {
-            throw new NotImplementedException();
+            int standortIdZaehler = 0;
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            XmlNode standort = xmlDocument.CreateElement("Standort");
+            XmlNode standortId = xmlDocument.CreateElement("StandortId");
+            XmlNode name = xmlDocument.CreateElement("Name");
+            // groesste StandortID bestimmen
+            foreach (var standortContainer in xmlDocument.GetElementsByTagName("Standort"))
+            {
+                standortIdZaehler += 1;
+            }
+            standortId.InnerText = Convert.ToString(standortIdZaehler + 1);
+            name.InnerText = standortName;
+            standort.AppendChild(standortId);
+            standort.AppendChild(name);
+            xmlDocument.DocumentElement.AppendChild(standort);
+            xmlDocument.Save(pfadZuStandortXml);
         }
     }
 }
