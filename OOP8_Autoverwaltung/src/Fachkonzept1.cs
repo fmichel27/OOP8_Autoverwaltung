@@ -18,23 +18,27 @@ namespace OOP8_Autoverwaltung.src
         public List<Auto> GetAlleAutos()
         { 
             List<Auto> autos = eineDatenhaltung.LiesAlleAutos();
+            autos.Reverse();
             return autos;
         }
 
         public List<Standort> GetAlleStandorte()
         {
             List<Standort> standorte = eineDatenhaltung.LiesAlleStandorte();
+            standorte.Reverse();
             return standorte;
         }
 
         public List<Auto> FilterAutosNachAutomarke(string gesuchteMArke)
         {
             List<Auto> autos = eineDatenhaltung.LiesAutoMarke(gesuchteMArke);
+            autos.Reverse();
             return autos;
         }
         public List<Auto> FilterAutosNachStandort(int standortid)
         {
             List<Auto> autos = eineDatenhaltung.LiesStandort(standortid);
+            autos.Reverse();
             return autos;
         }
 
