@@ -195,7 +195,6 @@
             this.Controls.Add(this.btn_neuerStandort);
             this.Name = "GUI";
             this.Text = "GUI";
-            this.Load += new System.EventHandler(this.GUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,9 +15,9 @@ namespace OOP8_Autoverwaltung.src
         List<Auto> FilterAutosNachAutomarke(string gesuchteMArke);
         List<Auto> FilterAutosNachStandort(int standortid);
         void SpeichereNeuesAuto(string automarke);
-        void AendereAuto(int autoNr, string neueAutomarke);
+        void AendereAuto(int autoNr, string neueAutomarke, int standortid);
         void LoescheAuto(int autoNr);
-        void SpeichereNeuenStandort(Standort neuerStandort);
+        void SpeichereNeuenStandort(string neuerStandortName);
         void AendereStandort(int standortid, string neuerStandortName);
         void LoescheStandort(int standortNr);
 

@@ -44,18 +44,18 @@ namespace OOP8_Autoverwaltung.src
             eineDatenhaltung.SpeichereAuto(neuesAuto.GetAutoMarke(), neuesAuto.GetStandortId());
         }
 
-        public void AendereAuto(int autoNr, string automarke)
+        public void AendereAuto(int autoNr, string automarke, int standortid)
         {
-            Auto auto = new Auto(automarke);
+            Auto auto = new Auto(standortid, automarke);
             eineDatenhaltung.AendereAuto(autoNr, auto.GetAutoMarke(),auto.GetStandortId());
         }
         public void LoescheAuto(int autoNr)
         {
             eineDatenhaltung.LoescheAuto(autoNr);
         }
-        public void SpeichereNeuenStandort(Standort neuerStandort)
+        public void SpeichereNeuenStandort(string neuerStandortName)
         {
-            eineDatenhaltung.SpeichereStandort(neuerStandort.GetStandortName());
+            eineDatenhaltung.SpeichereStandort(neuerStandortName);
         }
 
         public void AendereStandort(int standortid, string neuerStandortName)

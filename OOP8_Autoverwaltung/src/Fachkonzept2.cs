@@ -20,7 +20,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void AendereAuto(int autoNr, string neueAutomarke)
+        public void AendereAuto(int autoNr, string neueAutomarken, int standortid)
         {
             throw new NotImplementedException();
         }
@@ -76,6 +76,11 @@ namespace OOP8_Autoverwaltung.src
         }
 
         public void SpeichereNeuenStandort(string neuerStandortName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SpeichereNeuenStandort(Standort neuerStandort)
         {
             throw new NotImplementedException();
         }
