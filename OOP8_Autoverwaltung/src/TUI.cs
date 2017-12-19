@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace OOP8_Autoverwaltung.src
 {
-    
+
     class TUI
     {
         public TUI()
         {
             ZeigeMenue();
         }
-        public void ZeigeMenue() {
+        public void ZeigeMenue()
+        {
             int space = -30;
             Console.WriteLine("AUTO-VERWALTUNGS-SYSTEM");
             Console.WriteLine("");
@@ -36,64 +38,66 @@ namespace OOP8_Autoverwaltung.src
         }
         void LiesEingabe()
         {
-            Console.Write("Eingabe: ");
-            string eingabe = Console.ReadLine();
-            Console.Clear();
+            var regexMenue = new Regex(@"[a-j,x]", RegexOptions.IgnoreCase);
+            string eingabe = "z";
+            do
+            {
 
-            //Fehlerueberpruefung REGEX wenn das geht =)
+                Console.Write("Eingabe: ");
+                eingabe = Console.ReadLine();
+                Console.Clear();
+            } while (Regex.IsMatch(eingabe, regexMenue));
 
+            switch (eingabe)
+            {
+                case "a":
+                    ZeigeAlleStandorte();
+                    break;
+                case "b":
+                    ZeigeAlleAutos();
+                    break;
+                case "c":
+                    ZeigeAlleStandorte();
+                    break;
+                case "d":
+                    ZeigeAlleStandorte();
+                    break;
+                case "e":
+                    ();
+                    break;
+                case "f":
+                    ZeigeAlleStandorte();
+                    break;
+                case "g":
+                    ZeigeAlleStandorte();
+                    break;
+                case "h":
+                    ZeigeAlleStandorte();
+                    break;
+                case "i":
+                    ZeigeAlleStandorte();
+                    break;
+                case "j":
+                    ZeigeAlleStandorte();
+                    break;
+                default:
+                    break;
+            }
 
-            //switch case blöcke
-            //switch (eingabe)
+            //if (eingabe == "b")
             //{
-            //    case "a":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "b":
-            //        ZeigeAlleAutos();
-            //        break;
-            //    case "c":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "d":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "e":
-            //        ();
-            //        break;
-            //    case "f":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "g":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "h":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "i":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    case "j":
-            //        ZeigeAlleStandorte();
-            //        break;
-            //    default:
-            //        break;
+            //    Fachkonzept1 fachkonzept1 = new Fachkonzept1();
+            //    List<Auto> autos = fachkonzept1.GetAlleAutos();
+            //    foreach (var item in autos)
+            //    {
+            //        ErzeugeAusgabe(item.GetAutoMarke());
+            //    }
             //}
-
-            if (eingabe == "b")
-            {
-                Fachkonzept1 fachkonzept1 = new Fachkonzept1();
-                List<Auto> autos = fachkonzept1.GetAlleAutos();
-                foreach (var item in autos)
-                {
-                    ErzeugeAusgabe(item.GetAutoMarke());
-                }
-            }
-            if (eingabe == "e")
-            {
-                Fachkonzept1 fachkonzept1 = new Fachkonzept1();
-                fachkonzept1.SpeichereNeuesAuto("ferraritest");
-            }
+            //if (eingabe == "e")
+            //{
+            //    Fachkonzept1 fachkonzept1 = new Fachkonzept1();
+            //    fachkonzept1.SpeichereNeuesAuto("ferraritest");
+            //}
         }
         void ErzeugeAusgabe(string ausgabestring)
         {
