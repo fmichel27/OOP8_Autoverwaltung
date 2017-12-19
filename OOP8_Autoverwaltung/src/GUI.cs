@@ -82,8 +82,22 @@ namespace OOP8_Autoverwaltung.src
         private void btn_neuesAuto_Click(object sender, EventArgs e)
         {
             string neuesAuto = erzeugeEingabeFeld("Neues Auto", "Bitte geben Sie eine Automarke ein");
-            einFachkonzept.SpeichereNeuesAuto(neuesAuto);
+            try
+            {
+                int standortid = Convert.ToInt32(erzeugeEingabeFeld("Ändere Auto", "Bitte geben Sie eine Standort-ID ein"));
+                einFachkonzept.SpeichereNeuesAuto(neuesAuto, standortid);
+            }
+            catch
+            {
+                MessageBox.Show("Die Standort-ID darf nur aus Zahlen bestehen", "Fehler",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             ladeMarken();
+            if (lb_standorte.SelectedItem != null)
+            {
+                erzeugeMarkenAnStandortAusgabe();
+            }
+
         }
 
         private void btn_aendereAuto_Click(object sender, EventArgs e)
