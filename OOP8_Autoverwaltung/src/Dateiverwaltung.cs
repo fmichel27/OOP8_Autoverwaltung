@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,12 +33,43 @@ namespace OOP8_Autoverwaltung.src
 
         public Standort getStandortDesAutos(int standortid)
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            int aktuelleStandortId = 0;
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                aktuelleStandortId = Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText);
+                if (aktuelleStandortId == standortid)
+                {
+                    return new Standort(aktuelleStandortId, standorte.SelectSingleNode("Name").InnerText);
+                }
+            }
+            return new Standort(aktuelleStandortId, "Standort nicht gefunden.");
         }
 
         public List<Auto> LiesAlleAutos()
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            List<Auto> autoListe = new List<Auto>();
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
+                {
+                    try
+                    {
+                        int autoId = Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText);
+                        string autoMarke = auto.SelectSingleNode("Marke").InnerText;
+                        int standortId = Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText);
+                        autoListe.Add(new Auto(autoId, autoMarke, standortId));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Fehler! Node nicht gefunden: " + ex.Message);
+                    }
+                }
+            }
+            return autoListe;
         }
 
         public List<Standort> LiesAlleStandorte()
@@ -45,10 +77,17 @@ namespace OOP8_Autoverwaltung.src
             xmlDocument = new XmlDocument();
             xmlDocument.Load(pfadZuStandortXml);
             List<Standort> standortListe = new List<Standort>();
-            foreach (XmlNode Standorte in xmlDocument.DocumentElement)
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
             {
-                standortListe.Add(new Standort(Convert.ToInt32(Standorte.SelectSingleNode("Xml/Standort/Id")), Convert.ToString(Standorte.SelectSingleNode("Xml/Standort/Name"))));
-            }
+                try
+                {
+                    standortListe.Add(new Standort(Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText), standorte.SelectSingleNode("Name").InnerText));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fehler! Node nicht gefunden: " + ex.Message);
+                }
+        }
             return standortListe;
         }
 
@@ -64,7 +103,18 @@ namespace OOP8_Autoverwaltung.src
 
         public void LoescheAuto(int id)
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
+                {
+                    if (Convert.ToInt32(auto.SelectSingleNode("AutoId")) == id)
+                    {
+                        xmlDocument.DocumentElement.RemoveChild(auto);
+                    }
+                }
+            }
         }
 
         public void LoescheStandort(int id)
@@ -93,6 +143,7 @@ namespace OOP8_Autoverwaltung.src
             XmlNode standort = xmlDocument.CreateElement("Standort");
             XmlNode standortId = xmlDocument.CreateElement("StandortId");
             XmlNode name = xmlDocument.CreateElement("Name");
+            XmlNode autos = xmlDocument.CreateElement("Autos");
             // groesste StandortID bestimmen
             foreach (var standortContainer in xmlDocument.GetElementsByTagName("Standort"))
             {

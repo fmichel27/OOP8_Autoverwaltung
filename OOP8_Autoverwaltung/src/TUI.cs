@@ -35,22 +35,24 @@ namespace OOP8_Autoverwaltung.src
             Console.WriteLine("{0," + space + "}{1}", " Standort aendern", "(i)");
             Console.WriteLine("{0," + space + "}{1}", " Standort loeschen", "(j)");
             Console.WriteLine("---------------------------------");
+            Console.WriteLine("Beenden (x)");
             Console.WriteLine();
             LiesEingabe();
         }
         void LiesEingabe()
         {
             bool wiederholung = false;
-            string eingabe;
+            Console.WriteLine(wiederholung);
+            string eingabe = "";
             do
             {
                 if (wiederholung)
                     Console.WriteLine("Bitte nur Buchstaben von a bis j eingeben, x zum Beenden.");
-                Console.Write("Eingabe: ");
+                Console.Write("Eingabe (Bestätigen mit [Enter]): ");
                 eingabe = Console.ReadLine();
                 //Console.Clear();
                 wiederholung = true;
-            } while (!Regex.IsMatch(eingabe, "^[a-j,x]$"));
+            } while (!Regex.IsMatch(eingabe, "^[a-jx]$"));
 
             switch (eingabe)
             {
@@ -99,27 +101,49 @@ namespace OOP8_Autoverwaltung.src
         }
         void ErzeugeAusgabeListeAuto(List<Auto> ausgabeListe)
         {
-            //Konsolenausgabe
-
+            Console.WriteLine(" Auto ID | Automarke | Standort");
+            foreach (Auto auto in ausgabeListe)
+            {
+                string autoMarke = auto.GetAutoMarke();
+                int autoId = auto.GetAutoId();
+                int standortId = auto.GetStandortId();
+                string standortName = einFachkonzept.getStandortDesAutos(standortId).GetStandortName();
+                Console.WriteLine(string.Format("{0,8} | {1,10} | {2,-14}", autoId, autoMarke, standortName));
+            }
         }
         void ErzeugeAusgabeListeStandort(List<Standort> ausgabeListe)
         {
-            //Konsolenausgabe
-
+            Console.WriteLine(" ID | Standortname");
+            foreach (Standort standort in ausgabeListe)
+            {
+                int standortId = standort.GetStandortID();
+                string standortName = standort.GetStandortName();
+                Console.WriteLine(string.Format("{0,3} | {1,-14}", standortId, standortName));
+            }
         }
         void ZeigeAlleAutos()
         {
             PrintUeberschrift();
             Console.WriteLine("Alle Autos:");
             Console.WriteLine("");
-            //aufruf fachkonzept gibt liste zurück
-            //List<Auto> autos = einFachkonzept.ZeigeAlleAutos();
-            //for each
-            //ErzeugeAusgabeListeAuto();
+            List<Auto> alleAutos = einFachkonzept.GetAlleAutos();
+            ErzeugeAusgabeListeAuto(alleAutos);
+            Console.WriteLine("");
+            Console.WriteLine("Zum Fortfahren beliebige Taste drücken..");
+            Console.ReadKey();
+            ZeigeMenue();
         }
         void ZeigeAlleStandorte()
         {
-
+            PrintUeberschrift();
+            Console.WriteLine("Alle Standorte:");
+            Console.WriteLine("");
+            List<Standort> alleStandorte = einFachkonzept.GetAlleStandorte();
+            ErzeugeAusgabeListeStandort(alleStandorte);
+            Console.WriteLine("");
+            Console.WriteLine("Zum Fortfahren beliebige Taste drücken..");
+            Console.ReadKey();
+            ZeigeMenue();
         }
         void FilternNachAutoMarke()
         {
@@ -131,12 +155,38 @@ namespace OOP8_Autoverwaltung.src
         }
         void AutoAnlegen()
         {
-            //input
-            //fachkonzept.autoanlegen()
+            string eingabe;
+            string eingabe2;
+            PrintUeberschrift();
+            Console.WriteLine("Bitte geben Sie einen Namen für das neue Auto an.");
+            do
+            {
+                Console.WriteLine("Es sind Buchstaben und Zahlen erlaubt.");
+                Console.Write("Bitte einen Namen eingeben: ");
+                eingabe = Console.ReadLine();
+                Console.Write("Bitte die StandortID eingeben: ");
+                eingabe2 = Console.ReadLine();
+            } while (!Regex.IsMatch(eingabe, "[a-zA-Z0-9 ]+") && !Regex.IsMatch(eingabe, "[0-9 ]+"));
+            einFachkonzept.SpeichereNeuesAuto(eingabe, Convert.ToInt32(eingabe2));
+            Console.WriteLine("Neues Auto angelegt.");
+            Console.WriteLine("");
+            ZeigeMenue();
         }
         void AutoLoeschen()
         {
+            string eingabe;
+            PrintUeberschrift();
+            Console.WriteLine("Welches Auto möchten Sie löschen?");
+            Console.Write("Bitte ID eingeben: ");
+            do
+            {
+                eingabe = Console.ReadLine();
 
+            } while (!Regex.IsMatch(eingabe, "[0-9]+"));
+            einFachkonzept.LoescheAuto(Convert.ToInt32(eingabe));
+            Console.WriteLine("Auto gelöscht.");
+            Console.WriteLine("");
+            ZeigeMenue();
         }
         void AutoAendern()
         {
@@ -144,11 +194,24 @@ namespace OOP8_Autoverwaltung.src
         }
         void StandortAnlegen()
         {
-
+            string eingabe;
+            PrintUeberschrift();
+            Console.WriteLine("Bitte geben Sie einen Namen für den neuen Standort an.");
+            do
+            {
+                Console.WriteLine("Es sind Buchstaben und Zahlen erlaubt.");
+                Console.Write("Bitte einen Namen eingeben: ");
+                eingabe = Console.ReadLine();
+            } while (!Regex.IsMatch(eingabe, "[a-zA-Z0-9 ]+"));
+            einFachkonzept.SpeichereNeuenStandort(eingabe);
+            Console.WriteLine("Neuen Standort angelegt.");
+            Console.WriteLine("");
+            ZeigeMenue();
         }
         void StandortLoeschen()
         {
             string eingabe;
+            PrintUeberschrift();
             Console.WriteLine("Welchen Standort möchten Sie löschen?");
             Console.Write("Bitte ID eingeben: ");
             do
@@ -157,10 +220,34 @@ namespace OOP8_Autoverwaltung.src
 
             } while (!Regex.IsMatch(eingabe, "[0-9]+"));
             einFachkonzept.LoescheStandort(Convert.ToInt32(eingabe));
+            Console.WriteLine("Standort gelöscht.");
+            Console.WriteLine("");
+            ZeigeMenue();
         }
         void StandortAendern()
         {
+            List<Standort> alleStandorte = einFachkonzept.GetAlleStandorte();
+            ErzeugeAusgabeListeStandort(alleStandorte);
+            string eingabe;
+            PrintUeberschrift();
+            Console.WriteLine("Welchen Standort möchten Sie bearbeiten?");
+            Console.Write("Bitte ID eingeben: ");
+            do
+            {
+                eingabe = Console.ReadLine();
 
+            } while (!Regex.IsMatch(eingabe, "[0-9]+"));
+            int standortId = Convert.ToInt32(eingabe);
+            do
+            {
+                Console.WriteLine("Es sind Buchstaben und Zahlen erlaubt.");
+                Console.Write("Bitte einen neuen Namen eingeben: ");
+                eingabe = Console.ReadLine();
+            } while (!Regex.IsMatch(eingabe, "[a-zA-Z0-9 ]+"));
+            einFachkonzept.AendereStandort(standortId, eingabe);
+            Console.WriteLine("Standort geändert.");
+            Console.WriteLine("");
+            ZeigeMenue();
         }
         void PrintUeberschrift()
         {

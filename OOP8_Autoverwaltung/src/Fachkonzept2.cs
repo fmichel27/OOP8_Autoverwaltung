@@ -15,11 +15,6 @@ namespace OOP8_Autoverwaltung.src
             this.eineDatenhaltung = eineDatenhaltung;
         }
 
-        public void AendereAuto(int autoNr, Auto auto)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AendereAuto(int autoNr, string neueAutomarken, int standortid)
         {
             throw new NotImplementedException();
@@ -47,27 +42,22 @@ namespace OOP8_Autoverwaltung.src
 
         public List<Auto> GetAlleAutos()
         {
-            throw new NotImplementedException();
+            return eineDatenhaltung.LiesAlleAutos();
         }
 
         public List<Standort> GetAlleStandorte()
         {
-            throw new NotImplementedException();
+            return eineDatenhaltung.LiesAlleStandorte();
         }
 
         public Standort getStandortDesAutos(int standortid)
         {
-            throw new NotImplementedException();
-        }
-
-        public void InitialisiereSpeichermedium(string speichermedium)
-        {
-            throw new NotImplementedException();
+            return eineDatenhaltung.getStandortDesAutos(standortid);
         }
 
         public void LoescheAuto(int autoNr)
         {
-            throw new NotImplementedException();
+            eineDatenhaltung.LoescheAuto(autoNr);
         }
 
         public void LoescheStandort(int standortNr)
@@ -77,17 +67,12 @@ namespace OOP8_Autoverwaltung.src
 
         public void SpeichereNeuenStandort(string neuerStandortName)
         {
-            throw new NotImplementedException();
+            eineDatenhaltung.SpeichereStandort(neuerStandortName);
         }
 
-        public void SpeichereNeuenStandort(Standort neuerStandort)
+        public void SpeichereNeuesAuto(string automarke, int standortid)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SpeichereNeuesAuto(string automarke)
-        {
-            throw new NotImplementedException();
+            eineDatenhaltung.SpeichereAuto(automarke, standortid);
         }
     }
 }

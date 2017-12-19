@@ -9,12 +9,11 @@ namespace OOP8_Autoverwaltung.src
     interface IFachkonzept
     {
 
-        void InitialisiereSpeichermedium(string speichermedium);
         List<Auto> GetAlleAutos();
         List<Standort> GetAlleStandorte();
         List<Auto> FilterAutosNachAutomarke(string gesuchteMArke);
         List<Auto> FilterAutosNachStandort(int standortid);
-        void SpeichereNeuesAuto(string automarke);
+        void SpeichereNeuesAuto(string automarke, int standortid);
         void AendereAuto(int autoNr, string neueAutomarke, int standortid);
         void LoescheAuto(int autoNr);
         void SpeichereNeuenStandort(string neuerStandortName);

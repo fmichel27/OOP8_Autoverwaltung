@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Xml>
   <Standort>
     <StandortId>1</StandortId>
@@ -27,5 +27,21 @@
         <Marke>Seat</Marke>
       </Auto>
     </Autos>
+  </Standort>
+  <Standort>
+    <StandortId>3</StandortId>
+    <Name>Munich</Name>
+    <Autos>
+    </Autos>
+  </Standort>
+  <Standort>
+    <StandortId>4</StandortId>
+    <Name>Köln</Name>
+    <Autos>
+    </Autos>
+  </Standort>
+  <Standort>
+    <StandortId>5</StandortId>
+    <Name>Pforzheim</Name>
   </Standort>
 </Xml>

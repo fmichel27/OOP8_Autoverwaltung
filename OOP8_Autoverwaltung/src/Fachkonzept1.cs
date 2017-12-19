@@ -38,10 +38,9 @@ namespace OOP8_Autoverwaltung.src
             return autos;
         }
 
-        public void SpeichereNeuesAuto(string automarke)
+        public void SpeichereNeuesAuto(string automarke, int standortid)
         {
-            Auto neuesAuto = new Auto(automarke);
-            eineDatenhaltung.SpeichereAuto(neuesAuto.GetAutoMarke(), neuesAuto.GetStandortId());
+            eineDatenhaltung.SpeichereAuto(automarke, standortid);
         }
 
         public void AendereAuto(int autoNr, string automarke, int standortid)
@@ -67,13 +66,6 @@ namespace OOP8_Autoverwaltung.src
             eineDatenhaltung.LoescheStandort(standortNr);
         }
 
-
-        public void InitialisiereSpeichermedium(string speichermedium)
-        {
-            throw new NotImplementedException();
-        }
-
- 
         public Standort getStandortDesAutos(int standortid)
         {
             Standort standortDesAutos = eineDatenhaltung.getStandortDesAutos(standortid);
