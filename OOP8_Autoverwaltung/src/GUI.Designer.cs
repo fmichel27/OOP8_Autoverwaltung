@@ -37,11 +37,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lb_standorte = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tb_Marken = new System.Windows.Forms.TextBox();
-            this.tb_Standort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lb_marken = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lb_markenAnStandort = new System.Windows.Forms.ListBox();
+            this.lb_standortDerMarke = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btn_neuerStandort
@@ -131,23 +131,6 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Marken";
             // 
-            // tb_Marken
-            // 
-            this.tb_Marken.Location = new System.Drawing.Point(292, 6);
-            this.tb_Marken.Multiline = true;
-            this.tb_Marken.Name = "tb_Marken";
-            this.tb_Marken.Size = new System.Drawing.Size(100, 50);
-            this.tb_Marken.TabIndex = 9;
-            // 
-            // tb_Standort
-            // 
-            this.tb_Standort.Location = new System.Drawing.Point(292, 166);
-            this.tb_Standort.Multiline = true;
-            this.tb_Standort.Name = "tb_Standort";
-            this.tb_Standort.Size = new System.Drawing.Size(100, 50);
-            this.tb_Standort.TabIndex = 13;
-            this.tb_Standort.TextChanged += new System.EventHandler(this.tb_Standort_TextChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -164,6 +147,7 @@
             this.lb_marken.Name = "lb_marken";
             this.lb_marken.Size = new System.Drawing.Size(115, 82);
             this.lb_marken.TabIndex = 11;
+            this.lb_marken.SelectedIndexChanged += new System.EventHandler(this.lb_marken_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -174,16 +158,32 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Marke";
             // 
+            // lb_markenAnStandort
+            // 
+            this.lb_markenAnStandort.FormattingEnabled = true;
+            this.lb_markenAnStandort.Location = new System.Drawing.Point(277, 9);
+            this.lb_markenAnStandort.Name = "lb_markenAnStandort";
+            this.lb_markenAnStandort.Size = new System.Drawing.Size(115, 69);
+            this.lb_markenAnStandort.TabIndex = 14;
+            // 
+            // lb_standortDerMarke
+            // 
+            this.lb_standortDerMarke.FormattingEnabled = true;
+            this.lb_standortDerMarke.Location = new System.Drawing.Point(277, 169);
+            this.lb_standortDerMarke.Name = "lb_standortDerMarke";
+            this.lb_standortDerMarke.Size = new System.Drawing.Size(115, 82);
+            this.lb_standortDerMarke.TabIndex = 15;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 327);
-            this.Controls.Add(this.tb_Standort);
+            this.Controls.Add(this.lb_standortDerMarke);
+            this.Controls.Add(this.lb_markenAnStandort);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lb_marken);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tb_Marken);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lb_standorte);
             this.Controls.Add(this.label1);
@@ -212,10 +212,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lb_standorte;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_Marken;
-        private System.Windows.Forms.TextBox tb_Standort;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lb_marken;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox lb_markenAnStandort;
+        private System.Windows.Forms.ListBox lb_standortDerMarke;
     }
 }

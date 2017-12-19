@@ -27,9 +27,9 @@ namespace OOP8_Autoverwaltung.src
             List<Auto> autos = datenbankverwaltung.LiesAutoMarke(gesuchteMArke);
             return autos;
         }
-        public List<Auto> FilterAutosNachStandort(string gesuchterStandort)
+        public List<Auto> FilterAutosNachStandort(int standortid)
         {
-            List<Auto> autos = datenbankverwaltung.LiesStandort(gesuchterStandort);
+            List<Auto> autos = datenbankverwaltung.LiesStandort(standortid);
             return autos;
         }
 
@@ -57,14 +57,10 @@ namespace OOP8_Autoverwaltung.src
         {
             datenbankverwaltung.AendereStandort(standortid, neuerStandortName);
         }
-        public void LoescheSTandort(int standortNr)
+        public void LoescheStandort(int standortNr)
         {
             datenbankverwaltung.LoescheStandort(standortNr);
         }
-
-
-
-
 
 
         public void InitialisiereSpeichermedium(string speichermedium)
@@ -72,14 +68,12 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-
-
-        public void LoescheStandort(int standortNr)
+ 
+        public Standort getStandortDesAutos(int standortid)
         {
-            throw new NotImplementedException();
+            Standort standortDesAutos = datenbankverwaltung.getStandortDesAutos(standortid);
+
+            return standortDesAutos;
         }
-
-
-
     }
 }

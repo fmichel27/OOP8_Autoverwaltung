@@ -26,6 +26,11 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
+        public Standort getStandortDesAutos(int standortid)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Auto> LiesAlleAutos()
         {
             throw new NotImplementedException();
@@ -41,7 +46,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public Standort LiesStandort(string gesuchterStandort)
+        public List<Auto> LiesStandort(int standortid)
         {
             throw new NotImplementedException();
         }
@@ -66,7 +71,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        List<Auto> IDatenhaltung.LiesStandort(string gesuchterStandort)
+        List<Auto> IDatenhaltung.LiesStandort(int stndortid)
         {
             throw new NotImplementedException();
         }

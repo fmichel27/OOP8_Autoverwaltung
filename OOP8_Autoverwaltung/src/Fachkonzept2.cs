@@ -33,7 +33,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public List<Auto> FilterAutosNachStandort(string gesuchterStandort)
+        public List<Auto> FilterAutosNachStandort(int standortid)
         {
             throw new NotImplementedException();
         }
@@ -48,6 +48,11 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
+        public Standort getStandortDesAutos(int standortid)
+        {
+            throw new NotImplementedException();
+        }
+
         public void InitialisiereSpeichermedium(string speichermedium)
         {
             throw new NotImplementedException();
@@ -58,7 +63,7 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
-        public void LoescheSTandort(int standortNr)
+        public void LoescheStandort(int standortNr)
         {
             throw new NotImplementedException();
         }

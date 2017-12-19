@@ -82,7 +82,7 @@ namespace OOP8_Autoverwaltung.src
             if (lb_standorte.SelectedItem != null)
             {
                 string[] ausgewaehlterStandort = lb_standorte.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                einFachkonzept.LoescheSTandort(Convert.ToInt32(ausgewaehlterStandort[0]));
+                einFachkonzept.LoescheStandort(Convert.ToInt32(ausgewaehlterStandort[0]));
                 ladeStandorte();
             }
             else
@@ -134,22 +134,33 @@ namespace OOP8_Autoverwaltung.src
 
         private void lb_standorte_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lb_markenAnStandort.Items.Clear();
             string[] ausgewaehlterStandort = lb_standorte.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
 
-            List<Auto> autos = einFachkonzept.FilterAutosNachStandort(ausgewaehlterStandort[1]);
+            List<Auto> autos = einFachkonzept.FilterAutosNachStandort(Convert.ToInt32(ausgewaehlterStandort[0]));
 
             foreach (Auto auto in autos)
             {
-                Console.WriteLine(auto.autoMarke);
-                tb_Marken.Text = String.Join(Environment.NewLine, auto.autoMarke);
+                lb_markenAnStandort.Items.Add(auto.GetAutoId() + "   " + auto.GetAutoMarke());                  
             }
+        }
+
+        private void lb_marken_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lb_standortDerMarke.Items.Clear();
+            string[] ausgewaehltesAuto = lb_marken.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+
+
+            Standort standortDesAutos = einFachkonzept.getStandortDesAutos(Convert.ToInt32(ausgewaehltesAuto[0]));
 
             
+            lb_standortDerMarke.Items.Add(standortDesAutos.GetStandortID() + "   " + standortDesAutos.GetStandortName());
+
         }
+
 
         private void tb_Standort_TextChanged(object sender, EventArgs e)
         {
-            tb_Standort.Text = "test123";
         }
 
         public string erzeugeEingabeFeld(string caption, string text)

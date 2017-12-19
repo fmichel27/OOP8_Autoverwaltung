@@ -101,7 +101,7 @@ namespace OOP8_Autoverwaltung.src
             return autos;
         }
 
-        public List<Auto> LiesStandort(string gesuchterStandort)
+        public List<Auto> LiesStandort(int standortid)
         {
             List<Auto> autos = new List<Auto>();
             connection = new SqlConnection(connectionString);
@@ -111,29 +111,12 @@ namespace OOP8_Autoverwaltung.src
                 SqlCommand command;
                 string sql = null;
                 SqlDataReader dataReader;
-                sql = "Select * from Standorte WHERE Name Like '" + gesuchterStandort + "'";
-                
-                command = new SqlCommand(sql, connection);
-                dataReader = command.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    Console.WriteLine("test" + dataReader.GetValue(0));
-                }
-
-                int standortid = Convert.ToInt32(dataReader.GetValue(0));
-                
-                dataReader.Close();
-               
-                command.Dispose();
-                
-
                 sql = "Select * from Autos WHERE F_Standort_id Like '" + standortid + "'";
                 command = new SqlCommand(sql, connection);
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    autos.Add(new Auto(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString()));
+                    autos.Add(new Auto(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString(), Convert.ToInt32(dataReader.GetValue(2))));
                 }
                 dataReader.Close();
                 command.Dispose();
@@ -141,7 +124,7 @@ namespace OOP8_Autoverwaltung.src
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Verbindungsfehler beim Lesen des Standortes " + gesuchterStandort + "!: " + ex.Message);
+                MessageBox.Show("Verbindungsfehler beim Lesen der Standortid " + standortid + "!: " + ex.Message);
             }
             return autos;
         }
@@ -240,6 +223,37 @@ namespace OOP8_Autoverwaltung.src
             {
                 MessageBox.Show("Fehler beim Loeschen des Standortes mit der Standort-ID " + id + " ! " + ex.Message);
             }
+        }
+
+        public Standort getStandortDesAutos(int standortid)
+        {
+            Standort standortDesAutos = null;
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command;
+                string sql = null;
+                SqlDataReader dataReader;
+                sql = "SELECT * FROM Standorte WHERE Standort_id = (Select Autos.F_Standort_id From Autos WHERE Autos.Auto_id = '" + standortid + "')";
+                command = new SqlCommand(sql, connection);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    standortDesAutos = new Standort(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString());
+                }
+                dataReader.Close();
+                command.Dispose();
+                connection.Close();
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verbindungsfehler beim Lesen der Standortid " + standortid + "!: " + ex.Message);
+            }
+
+
+            return standortDesAutos;
         }
     }
 }
