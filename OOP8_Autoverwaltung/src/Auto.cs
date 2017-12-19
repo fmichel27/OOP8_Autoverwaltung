@@ -8,9 +8,9 @@ namespace OOP8_Autoverwaltung.src
 {
     class Auto
     {
-        string autoMarke;
-        int autoId;
-        int standortId;
+        public string autoMarke;
+        public int autoId;
+        public int standortId;
 
         public Auto()
         {
@@ -25,7 +25,12 @@ namespace OOP8_Autoverwaltung.src
             this.standortId = standortId;
             this.autoMarke = autoMarke;
         }
-
+        public Auto(int autoId, string autoMarke, int standortId)
+        {
+            this.autoId = autoId;
+            this.standortId = standortId;
+            this.autoMarke = autoMarke;
+        }
 
         public int GetStandortId()
         {

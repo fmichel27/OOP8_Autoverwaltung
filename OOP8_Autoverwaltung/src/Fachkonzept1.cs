@@ -33,13 +33,15 @@ namespace OOP8_Autoverwaltung.src
             return autos;
         }
 
-        public void SpeichereNeuesAuto(Auto neuesAuto)
+        public void SpeichereNeuesAuto(string automarke)
         {
+            Auto neuesAuto = new Auto(automarke);
             datenbankverwaltung.SpeichereAuto(neuesAuto.GetAutoMarke(), neuesAuto.GetStandortId());
         }
 
-        public void AendereAuto(int autoNr, Auto auto)
+        public void AendereAuto(int autoNr, string automarke)
         {
+            Auto auto = new Auto(automarke);
             datenbankverwaltung.AendereAuto(autoNr, auto.GetAutoMarke(),auto.GetStandortId());
         }
         public void LoescheAuto(int autoNr)
@@ -51,9 +53,9 @@ namespace OOP8_Autoverwaltung.src
             datenbankverwaltung.SpeichereStandort(neuerStandort.GetStandortName());
         }
 
-        public void AendereStandort(string alterStandortName, string neuerStandortName)
+        public void AendereStandort(int standortid, string neuerStandortName)
         {
-            datenbankverwaltung.AendereStandort(alterStandortName, neuerStandortName);
+            datenbankverwaltung.AendereStandort(standortid, neuerStandortName);
         }
         public void LoescheSTandort(int standortNr)
         {

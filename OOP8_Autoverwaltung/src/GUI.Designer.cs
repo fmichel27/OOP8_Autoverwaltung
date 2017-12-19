@@ -120,6 +120,7 @@
             this.lb_standorte.Name = "lb_standorte";
             this.lb_standorte.Size = new System.Drawing.Size(115, 69);
             this.lb_standorte.TabIndex = 7;
+            this.lb_standorte.SelectedIndexChanged += new System.EventHandler(this.lb_standorte_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -145,6 +146,7 @@
             this.tb_Standort.Name = "tb_Standort";
             this.tb_Standort.Size = new System.Drawing.Size(100, 50);
             this.tb_Standort.TabIndex = 13;
+            this.tb_Standort.TextChanged += new System.EventHandler(this.tb_Standort_TextChanged);
             // 
             // label3
             // 
@@ -160,7 +162,7 @@
             this.lb_marken.FormattingEnabled = true;
             this.lb_marken.Location = new System.Drawing.Point(72, 169);
             this.lb_marken.Name = "lb_marken";
-            this.lb_marken.Size = new System.Drawing.Size(65, 69);
+            this.lb_marken.Size = new System.Drawing.Size(115, 82);
             this.lb_marken.TabIndex = 11;
             // 
             // label4

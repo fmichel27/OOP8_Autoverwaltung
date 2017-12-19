@@ -8,8 +8,8 @@ namespace OOP8_Autoverwaltung.src
 {
     class Standort
     {
-        int standortid;
-        string standortName;
+        public int standortid;
+        public string standortName;
 
         public Standort()
         {

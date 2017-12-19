@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 
 
 namespace OOP8_Autoverwaltung.src
@@ -32,60 +25,35 @@ namespace OOP8_Autoverwaltung.src
 
         public void ladeStandorte()
         {
-            //List<Standort> standorte = einFachkonzept.GetAlleStandorte();
+            lb_standorte.Items.Clear();
+            List<Standort> standorte = einFachkonzept.GetAlleStandorte();
 
-
-            //fuer tests
-            
-            List<Standort> standorte = new List<Standort>();
-            Standort teststandort1 = new Standort(1,"test1");
-            Standort teststandort2 = new Standort(2, "test2");
-            Standort teststandort3 = new Standort(3, "test3");
-            Standort teststandort4 = new Standort(4, "test4");
-            standorte.Add(teststandort1);
-            standorte.Add(teststandort2);
-            standorte.Add(teststandort3);
-            standorte.Add(teststandort4);
-           
             foreach (var standort in standorte)
             {
-                lb_standorte.Items.Add(standort.GetStandortName());
+                lb_standorte.Items.Add(standort.GetStandortID() + "   " + standort.GetStandortName());
             } 
         }
 
         public void ladeMarken()
         {
-            //List<Auto> autos = einFachkonzept.GetAlleAutos();
-
-
-            //fuer tests
-
-            List<Auto> autos = new List<Auto>();
-            Auto testauto1 = new Auto(1, "test1");
-            Auto testauto2 = new Auto(2, "test2");
-            Auto testauto3 = new Auto(3, "test3");
-            Auto testauto4 = new Auto(4, "test4");
-            autos.Add(testauto1);
-            autos.Add(testauto2);
-            autos.Add(testauto3);
-            autos.Add(testauto4);
-
+            lb_marken.Items.Clear();
+            List<Auto> autos = einFachkonzept.GetAlleAutos();
             foreach (var auto in autos)
             {
-                lb_marken.Items.Add(auto.GetAutoMarke());
+                lb_marken.Items.Add(auto.GetAutoId() + "   " + auto.GetAutoMarke());
             }
         }
 
         private void GUI_Load(object sender, EventArgs e)
         {
-
+            //keine ahnung was das hier ist wurde automatisch erzeugt
         }
 
         private void btn_neuerStandort_Click(object sender, EventArgs e)
         {
-
            string neuerStandortName = erzeugeEingabeFeld("Neuer Standort","Bitte geben Sie einen Standortname ein");
            einFachkonzept.SpeichereNeuenStandort(new Standort(neuerStandortName));
+           ladeStandorte();
 
         }
 
@@ -94,10 +62,13 @@ namespace OOP8_Autoverwaltung.src
         {
             if (lb_standorte.SelectedItem != null)
             {
-                string ausgewaehlterStandort = lb_standorte.SelectedItem.ToString();
+                string[] ausgewaehlterStandort = lb_standorte.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+
                 string neuerStandortName = erzeugeEingabeFeld("Neuer Standort", "Bitte geben Sie einen Standortname ein");
 
-                einFachkonzept.AendereStandort(ausgewaehlterStandort, neuerStandortName);
+                einFachkonzept.AendereStandort(Convert.ToInt32(ausgewaehlterStandort[0]), neuerStandortName);
+
+                ladeStandorte();
             }
             else
             {
@@ -110,8 +81,9 @@ namespace OOP8_Autoverwaltung.src
         {
             if (lb_standorte.SelectedItem != null)
             {
-                string ausgewaehlterStandort = lb_standorte.SelectedItem.ToString();
-                //einFachkonzept.LoescheSTandort();
+                string[] ausgewaehlterStandort = lb_standorte.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                einFachkonzept.LoescheSTandort(Convert.ToInt32(ausgewaehlterStandort[0]));
+                ladeStandorte();
             }
             else
             {
@@ -123,15 +95,20 @@ namespace OOP8_Autoverwaltung.src
         private void btn_neuesAuto_Click(object sender, EventArgs e)
         {
             string neuesAuto = erzeugeEingabeFeld("Neues Auto", "Bitte geben Sie eine Automarke ein");
-            einFachkonzept.SpeichereNeuesAuto(new Auto(neuesAuto));
+            einFachkonzept.SpeichereNeuesAuto(neuesAuto);
+            ladeMarken();
         }
 
         private void btn_aendereAuto_Click(object sender, EventArgs e)
         {
             if (lb_marken.SelectedItem != null)
             {
-                string ausgewaehltesAutot = lb_marken.SelectedItem.ToString();
-                //einFachkonzept.AendereAuto();
+                string[] ausgewaehltesAuto = lb_marken.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+
+                string neueAutomarke = erzeugeEingabeFeld("Ändere Auto", "Bitte geben Sie eine Automarke ein");
+
+                einFachkonzept.AendereAuto(Convert.ToInt32(ausgewaehltesAuto[0]), neueAutomarke);
+                ladeMarken();
             }
             else
             {
@@ -144,14 +121,35 @@ namespace OOP8_Autoverwaltung.src
         {
             if (lb_marken.SelectedItem != null)
             {
-                string ausgewaehlterStandort = lb_marken.SelectedItem.ToString();
-                //einFachkonzept.LoescheAuto();
+                string[] ausgewaehltesAuto = lb_marken.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                einFachkonzept.LoescheAuto(Convert.ToInt32(ausgewaehltesAuto[0]));
+                ladeMarken();
             }
             else
             {
                 MessageBox.Show("Bitte wählen Sie eine Auto aus", "Fehler",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lb_standorte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] ausgewaehlterStandort = lb_standorte.SelectedItem.ToString().Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+
+            List<Auto> autos = einFachkonzept.FilterAutosNachStandort(ausgewaehlterStandort[1]);
+
+            foreach (Auto auto in autos)
+            {
+                Console.WriteLine(auto.autoMarke);
+                tb_Marken.Text = String.Join(Environment.NewLine, auto.autoMarke);
+            }
+
+            
+        }
+
+        private void tb_Standort_TextChanged(object sender, EventArgs e)
+        {
+            tb_Standort.Text = "test123";
         }
 
         public string erzeugeEingabeFeld(string caption, string text)
@@ -162,7 +160,7 @@ namespace OOP8_Autoverwaltung.src
             prompt.Text = caption;
             Label textLabel = new Label() { Left = 16, Top = 20, Width = 240, Text = text };
             TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
-            Button confirmation = new Button() { Text = "Specihern", Left = 16, Width = 80, Top = 88, TabIndex = 1, TabStop = true };
+            Button confirmation = new Button() { Text = "OK", Left = 16, Width = 80, Top = 88, TabIndex = 1, TabStop = true };
             confirmation.Click += (sender, e) => { prompt.Close(); };
             prompt.Controls.Add(textLabel);
             prompt.Controls.Add(textBox);
@@ -172,5 +170,7 @@ namespace OOP8_Autoverwaltung.src
             prompt.ShowDialog();
             return string.Format("{0}", textBox.Text);
         }
+
+
     }
 }

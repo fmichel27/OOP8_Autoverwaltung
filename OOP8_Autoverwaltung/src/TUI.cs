@@ -91,9 +91,8 @@ namespace OOP8_Autoverwaltung.src
             }
             if (eingabe == "e")
             {
-                Auto testfiat = new Auto(2,"ferraritest");
                 Fachkonzept1 fachkonzept1 = new Fachkonzept1();
-                fachkonzept1.SpeichereNeuesAuto(testfiat);
+                fachkonzept1.SpeichereNeuesAuto("ferraritest");
             }
         }
         void ErzeugeAusgabe(string ausgabestring)

@@ -26,7 +26,7 @@ namespace OOP8_Autoverwaltung.src
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    autos.Add(new Auto(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString()));
+                    autos.Add(new Auto(Convert.ToInt32(dataReader.GetValue(0)), dataReader.GetValue(1).ToString(), Convert.ToInt32(dataReader.GetValue(2))));
                     
                 }
                 dataReader.Close();
@@ -111,13 +111,22 @@ namespace OOP8_Autoverwaltung.src
                 SqlCommand command;
                 string sql = null;
                 SqlDataReader dataReader;
-                sql = "Select * from Standort WHERE Name Like '" + gesuchterStandort + "'";
+                sql = "Select * from Standorte WHERE Name Like '" + gesuchterStandort + "'";
+                
                 command = new SqlCommand(sql, connection);
                 dataReader = command.ExecuteReader();
-                int standortid = Convert.ToInt32(dataReader.GetValue(0));
-                dataReader.Close();
-                command.Dispose();
 
+                while (dataReader.Read())
+                {
+                    Console.WriteLine("test" + dataReader.GetValue(0));
+                }
+
+                int standortid = Convert.ToInt32(dataReader.GetValue(0));
+                
+                dataReader.Close();
+               
+                command.Dispose();
+                
 
                 sql = "Select * from Autos WHERE F_Standort_id Like '" + standortid + "'";
                 command = new SqlCommand(sql, connection);
@@ -200,22 +209,20 @@ namespace OOP8_Autoverwaltung.src
                 MessageBox.Show("Fehler beim Speichern des Standortes " + standortName + " ! " + ex.Message);
             }
         }
-        public void AendereStandort(string alterStandortName, string neuerName)
+        public void AendereStandort(int standortid, string neuerStandortName)
         {
-            //TODO
-            // Überprüfung ob name schon in der Datenbank vorhanden damit keine doppelten einträge
             connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("UPDATE Standorte SET Name = '" + neuerName + "' WHERE Name = " + alterStandortName, connection);
+                SqlCommand command = new SqlCommand("UPDATE Standorte SET Name = '" + neuerStandortName + "' WHERE Standort_id = " + standortid, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fehler beim Aendern des Standortes mit dem Name " + alterStandortName + " ! " + ex.Message);
+                MessageBox.Show("Fehler beim Aendern des Standortes mit der ID " + standortid + " ! " + ex.Message);
             }
         }
         public void LoescheStandort(int id)

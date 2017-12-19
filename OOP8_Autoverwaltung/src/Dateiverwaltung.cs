@@ -21,6 +21,11 @@ namespace OOP8_Autoverwaltung.src
             throw new NotImplementedException();
         }
 
+        public void AendereStandort(int standortid, string neuerStandortName)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Auto> LiesAlleAutos()
         {
             throw new NotImplementedException();
