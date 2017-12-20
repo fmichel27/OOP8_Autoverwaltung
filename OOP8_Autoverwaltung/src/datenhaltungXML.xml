@@ -9,7 +9,7 @@
         <Marke>Skoda</Marke>
       </Auto>
       <Auto>
-        <AutoId>2</AutoId>
+        <AutoId>6</AutoId>
         <Marke>VW</Marke>
       </Auto>
     </Autos>
@@ -29,12 +29,6 @@
     </Autos>
   </Standort>
   <Standort>
-    <StandortId>3</StandortId>
-    <Name>München</Name>
-    <Autos>
-    </Autos>
-  </Standort>
-  <Standort>
     <StandortId>4</StandortId>
     <Name>Köln</Name>
     <Autos>
@@ -49,5 +43,10 @@
         <Marke>Fiat</Marke>
       </Auto>
     </Autos>
+  </Standort>
+  <Standort>
+    <StandortId>6</StandortId>
+    <Name>München</Name>
+    <Autos />
   </Standort>
 </Xml>

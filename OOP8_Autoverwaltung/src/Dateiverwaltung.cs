@@ -192,7 +192,7 @@ namespace OOP8_Autoverwaltung.src
                 {
                     if (Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText) == id)
                     {
-                        auto.RemoveChild(auto);
+                        standorte.SelectSingleNode("Autos").RemoveChild(auto);
                         xmlDocument.Save(pfadZuStandortXml);
                     }
                 }
@@ -205,7 +205,7 @@ namespace OOP8_Autoverwaltung.src
             xmlDocument.Load(pfadZuStandortXml);
             foreach (XmlNode standorte in xmlDocument.DocumentElement)
             {
-                if (Convert.ToInt32(standorte.SelectSingleNode("Xml/Standort/id")) == id)
+                if (Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText) == id)
                 {
                     xmlDocument.DocumentElement.RemoveChild(standorte);
                     xmlDocument.Save(pfadZuStandortXml);
@@ -228,7 +228,9 @@ namespace OOP8_Autoverwaltung.src
                     neuerStandort = standorte.SelectSingleNode("Autos");
                 foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
                 {
-                    autoIdZaehler += 1;
+                    //autoId bestimmen
+                    if (Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText) > autoIdZaehler) 
+                    autoIdZaehler = Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText);
                 }
             }
             marke.InnerText = autoMarke;
@@ -249,9 +251,10 @@ namespace OOP8_Autoverwaltung.src
             XmlNode name = xmlDocument.CreateElement("Name");
             XmlNode autos = xmlDocument.CreateElement("Autos");
             // groesste StandortID bestimmen
-            foreach (var standortContainer in xmlDocument.GetElementsByTagName("Standort"))
+            foreach (XmlNode standortContainer in xmlDocument.GetElementsByTagName("Standort"))
             {
-                standortIdZaehler += 1;
+                if (Convert.ToInt32(standortContainer.SelectSingleNode("StandortId").InnerText) > standortIdZaehler)
+                standortIdZaehler = Convert.ToInt32(standortContainer.SelectSingleNode("StandortId").InnerText);
             }
             standortId.InnerText = Convert.ToString(standortIdZaehler + 1);
             name.InnerText = standortName;
