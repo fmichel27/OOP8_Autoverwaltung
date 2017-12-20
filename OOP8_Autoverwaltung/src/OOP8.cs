@@ -17,7 +17,7 @@ namespace OOP8_Autoverwaltung.src
             //TUI eineTui = new TUI(new Fachkonzept1(new Datenbankverwaltung()));
             //TUI eineTui = new TUI(new Fachkonzept2(new Datenbankverwaltung()));
             //TUI eineTui = new TUI(new Fachkonzept1(new Dateiverwaltung()));
-            TUI eineTui = new TUI(new Fachkonzept2(new Dateiverwaltung()));
+            //TUI eineTui = new TUI(new Fachkonzept2(new Dateiverwaltung()));
 
         }
     }

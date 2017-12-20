@@ -49,7 +49,7 @@ namespace OOP8_Autoverwaltung.src
                     Console.WriteLine("Bitte nur Buchstaben von a bis j eingeben, x zum Beenden.");
                 Console.Write("Eingabe (Bestätigen mit [Enter]): ");
                 eingabe = Console.ReadLine();
-                //Console.Clear();
+                //Console.Clear(); # besser nicht loeschen, da Informationen hilfreich sein koennten
                 wiederholung = true;
             } while (!Regex.IsMatch(eingabe, "^[a-jx]$"));
 
@@ -91,13 +91,14 @@ namespace OOP8_Autoverwaltung.src
                     break;
             }
         }
-        void ErzeugeAusgabe(string ausgabestring)
-        {
-            Console.WriteLine(ausgabestring);
-            Console.ReadLine();
-            //Konsolenausgabe
+        //void ErzeugeAusgabe(string ausgabestring)
+        //{
+        //    Console.WriteLine(ausgabestring);
+        //    Console.ReadLine();
+        //    //Konsolenausgabe
 
-        }
+        //}
+
         void ErzeugeAusgabeListeAuto(List<Auto> ausgabeListe)
         {
             Console.WriteLine(" Auto ID | Automarke | Standort");
@@ -349,6 +350,5 @@ namespace OOP8_Autoverwaltung.src
             Console.WriteLine("AUTO-VERWALTUNGSSYSTEM");
             Console.WriteLine("");
         }
-
     }
 }
