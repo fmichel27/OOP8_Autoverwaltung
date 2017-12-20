@@ -8,7 +8,6 @@ namespace OOP8_Autoverwaltung.src
 {
     interface IFachkonzept
     {
-
         List<Auto> GetAlleAutos();
         List<Standort> GetAlleStandorte();
         List<Auto> FilterAutosNachAutomarke(string gesuchteMArke);

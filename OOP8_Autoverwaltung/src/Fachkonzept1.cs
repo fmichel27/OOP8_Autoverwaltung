@@ -29,9 +29,9 @@ namespace OOP8_Autoverwaltung.src
             return standorte;
         }
 
-        public List<Auto> FilterAutosNachAutomarke(string gesuchteMArke)
+        public List<Auto> FilterAutosNachAutomarke(string gesuchteMarke)
         {
-            List<Auto> autos = eineDatenhaltung.LiesAutoMarke(gesuchteMArke);
+            List<Auto> autos = eineDatenhaltung.LiesAutoMarke(gesuchteMarke);
             autos.Reverse();
             return autos;
         }

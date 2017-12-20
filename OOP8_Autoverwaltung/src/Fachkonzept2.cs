@@ -17,27 +17,22 @@ namespace OOP8_Autoverwaltung.src
 
         public void AendereAuto(int autoNr, string neueAutomarken, int standortid)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AendereStandort(string alterStandortName, string neuerName)
-        {
-            throw new NotImplementedException();
+            eineDatenhaltung.AendereAuto(autoNr, neueAutomarken, standortid);
         }
 
         public void AendereStandort(int standortid, string neuerStandortName)
         {
-            throw new NotImplementedException();
+            eineDatenhaltung.AendereStandort(standortid, neuerStandortName);
         }
 
-        public List<Auto> FilterAutosNachAutomarke(string gesuchteMArke)
+        public List<Auto> FilterAutosNachAutomarke(string gesuchteMarke)
         {
-            throw new NotImplementedException();
+            return eineDatenhaltung.LiesAutoMarke(gesuchteMarke);
         }
 
         public List<Auto> FilterAutosNachStandort(int standortid)
         {
-            throw new NotImplementedException();
+            return eineDatenhaltung.LiesStandort(standortid);
         }
 
         public List<Auto> GetAlleAutos()

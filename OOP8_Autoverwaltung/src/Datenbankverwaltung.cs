@@ -7,7 +7,6 @@ namespace OOP8_Autoverwaltung.src
 {
     class Datenbankverwaltung:IDatenhaltung
     {
-        string datenbankName;
         SqlConnection connection;
         string connectionString = Properties.Settings.Default.AutoverwaltungdbConnectionString;
 

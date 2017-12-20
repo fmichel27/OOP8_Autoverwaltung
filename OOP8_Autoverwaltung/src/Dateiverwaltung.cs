@@ -11,24 +11,57 @@ namespace OOP8_Autoverwaltung.src
     class Dateiverwaltung:IDatenhaltung
     {
         private XmlDocument xmlDocument;
-        string tmpAutosDateiName;
-        string tmpStandorteDateiName;
         string pfadZuStandortXml = "C:\\Users\\Philipp\\source\\repos\\OOP8_Autoverwaltung\\OOP8_Autoverwaltung\\src\\datenhaltungXML.xml";
 
 
         public void AendereAuto(int id, string neuerName, int neueStandortid)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AendereStandort(string alterStandortName, string neuerName)
-        {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            XmlNode neuesAuto = xmlDocument.CreateElement("Fehler");
+            XmlNode neuerStandort = xmlDocument.CreateElement("Fehler");
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                if (Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText) == neueStandortid)
+                {
+                    neuerStandort = standorte.SelectSingleNode("Autos");
+                }
+                foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
+                {
+                    if (Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText) == id)
+                    {
+                        auto.SelectSingleNode("Marke").InnerText = neuerName;
+                        neuesAuto = auto;
+                        standorte.SelectSingleNode("Autos").RemoveChild(auto);
+                    }
+                }
+            }
+            try
+            {
+                neuerStandort.AppendChild(neuesAuto);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler! Node nicht gefunden: " + ex.Message);
+            }
+            xmlDocument.Save(pfadZuStandortXml);
         }
 
         public void AendereStandort(int standortid, string neuerStandortName)
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            int aktuelleStandortId = 0;
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                aktuelleStandortId = Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText);
+                if (aktuelleStandortId == standortid)
+                {
+                    standorte.SelectSingleNode("Name").InnerText = neuerStandortName;
+                    xmlDocument.Save(pfadZuStandortXml);
+                    break;
+                }
+            }
         }
 
         public Standort getStandortDesAutos(int standortid)
@@ -93,12 +126,60 @@ namespace OOP8_Autoverwaltung.src
 
         public List<Auto> LiesAutoMarke(string gesuchteMarke)
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            List<Auto> autoListe = new List<Auto>();
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
+                {
+                    if (auto.SelectSingleNode("Marke").InnerText == gesuchteMarke)
+                    {
+                        try
+                        {
+                            int autoId = Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText);
+                            string autoMarke = auto.SelectSingleNode("Marke").InnerText;
+                            int standortId = Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText);
+                            autoListe.Add(new Auto(autoId, autoMarke, standortId));
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Fehler! Node nicht gefunden: " + ex.Message);
+                        }
+                    }
+                    break;
+                }
+            }
+            return autoListe;
         }
 
         public List<Auto> LiesStandort(int standortid)
         {
-            throw new NotImplementedException();
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            List<Auto> autoListe = new List<Auto>();
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                if ((Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText)) == standortid)
+                {
+                    foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
+                    {
+                        try
+                        {
+                            int autoId = Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText);
+                            string autoMarke = auto.SelectSingleNode("Marke").InnerText;
+                            int standortId = Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText);
+                            autoListe.Add(new Auto(autoId, autoMarke, standortId));
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Fehler! Node nicht gefunden: " + ex.Message);
+                        }
+                    }
+                    break;
+                }
+            }
+            return autoListe;
         }
 
         public void LoescheAuto(int id)
@@ -109,9 +190,10 @@ namespace OOP8_Autoverwaltung.src
             {
                 foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
                 {
-                    if (Convert.ToInt32(auto.SelectSingleNode("AutoId")) == id)
+                    if (Convert.ToInt32(auto.SelectSingleNode("AutoId").InnerText) == id)
                     {
-                        xmlDocument.DocumentElement.RemoveChild(auto);
+                        auto.RemoveChild(auto);
+                        xmlDocument.Save(pfadZuStandortXml);
                     }
                 }
             }
@@ -126,13 +208,35 @@ namespace OOP8_Autoverwaltung.src
                 if (Convert.ToInt32(standorte.SelectSingleNode("Xml/Standort/id")) == id)
                 {
                     xmlDocument.DocumentElement.RemoveChild(standorte);
+                    xmlDocument.Save(pfadZuStandortXml);
                 }
             }
         }
 
         public void SpeichereAuto(string autoMarke, int standortid)
         {
-            throw new NotImplementedException();
+            int autoIdZaehler = 0;
+            xmlDocument = new XmlDocument();
+            xmlDocument.Load(pfadZuStandortXml);
+            XmlNode neuesAuto = xmlDocument.CreateElement("Auto");
+            XmlNode marke = xmlDocument.CreateElement("Marke");
+            XmlNode autoId = xmlDocument.CreateElement("AutoId");
+            XmlNode neuerStandort = xmlDocument.CreateElement("Fehler");
+            foreach (XmlNode standorte in xmlDocument.DocumentElement)
+            {
+                if (Convert.ToInt32(standorte.SelectSingleNode("StandortId").InnerText) == standortid)
+                    neuerStandort = standorte.SelectSingleNode("Autos");
+                foreach (XmlNode auto in standorte.SelectSingleNode("Autos"))
+                {
+                    autoIdZaehler += 1;
+                }
+            }
+            marke.InnerText = autoMarke;
+            autoId.InnerText = Convert.ToString(autoIdZaehler + 1);
+            neuesAuto.AppendChild(autoId);
+            neuesAuto.AppendChild(marke);
+            neuerStandort.AppendChild(neuesAuto);
+            xmlDocument.Save(pfadZuStandortXml);
         }
 
         public void SpeichereStandort(string standortName)
@@ -153,6 +257,7 @@ namespace OOP8_Autoverwaltung.src
             name.InnerText = standortName;
             standort.AppendChild(standortId);
             standort.AppendChild(name);
+            standort.AppendChild(autos);
             xmlDocument.DocumentElement.AppendChild(standort);
             xmlDocument.Save(pfadZuStandortXml);
         }
